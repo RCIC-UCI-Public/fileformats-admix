@@ -1,0 +1,26 @@
+# Builds the module for hdf5. It first includes all the definitions
+# for the boost build and then overwrites specific keys
+!include hdf5.yaml
+!include /opt/rcic/include/rcic-module.yaml
+---
+- package: hdf5 module 
+  pkgname: "{{ name }}_{{version}}_{{compiler}}_{{compiler_ver}}-module"
+  no_src_dir: True
+  src_tarball: None
+  category: file formats
+  description: |
+     {{ base_description }}
+     Environment var: HDF5_HOME = {{ root }}
+  module:
+    name: "{{ version }}"
+    path: "{{ pkg_defaults.module.path }}/{{name}}/{{compiler}}/{{compiler_ver}}"
+    prepend_path:
+      - "{{ pkg_defaults.module.prepend_path }}"
+    setenv:
+      - HDF5_HOME {{ root }}
+    prereq:
+      - java/{{versions.java}}
+      - "{{ compiler }}/{{compiler_ver}}" 
+  requires:
+    - "{{ name }}_{{ version }}"
+    - rcic-module-support

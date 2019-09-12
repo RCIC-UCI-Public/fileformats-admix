@@ -1,0 +1,10 @@
+---
+hdf5: 
+   major: "1.10" 
+   minor: "5" 
+java: "1.8.0"
+compiler: 
+   name: gcc
+   version: "4.8.5"
+netcdf-c: "4.7.0"
+udunits: "2.2.26"

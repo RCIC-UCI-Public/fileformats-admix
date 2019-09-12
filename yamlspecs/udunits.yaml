@@ -1,0 +1,20 @@
+---
+- package: udunits 
+  name: udunits 
+  version: "2.2.26"
+  extension: tar.gz
+  vendor_source: ftp://ftp.unidata.ucar.edu/pub/udunits/udunits-{{version}}.{{extension}}
+  base_description: |
+    data units manipulation library, udunits(3), and conversion program,
+    udunits(1), UDUNITS.
+  description: "{{ base_description }}"
+  pkgname: "{{ name }}_{{ version }}"
+  src_tarball: "{{ name }}-{{ version}}.{{ extension }}"
+  src_dir: "{{ name }}-{{ version }}"
+  root: "{{ pkg_defaults.app_path }}/{{ name }}/{{ version }}"
+  build:
+    configure_args: >
+         --with-gnu-ld
+    target: 
+  files:
+    -  "{{ root }}"
