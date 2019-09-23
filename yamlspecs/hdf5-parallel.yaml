@@ -1,0 +1,17 @@
+!include hdf5.yaml
+---
+- package: hdf5-parallel
+  name: hdf5
+  mpi: "{{ versions.mpi.name }}"
+  mpi_ver: "{{ versions.mpi.version }}"
+  pkgname: "{{ name }}_{{ version }}_{{compiler}}_{{compiler_ver}}_{{mpi}}_{{mpi_ver}}"
+  root: "{{ pkg_defaults.app_path }}/{{ name }}/{{compiler}}/{{compiler_ver}}/{{mpi}}/{{mpi_ver}}/{{ version }}"
+  build:
+    modules:
+       - java/{{versions.java}}
+       - "{{ compiler }}/{{compiler_ver}}"
+       - "{{ mpi }}/{{mpi_ver}}"
+    configure_args: >
+       --enable-fortran --enable-cxx --enable-java
+       --enable-optimization=high --enable-parallel
+    target: 
