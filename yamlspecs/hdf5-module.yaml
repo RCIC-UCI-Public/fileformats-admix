@@ -22,5 +22,5 @@
       - java/{{versions.java}}
       - "{{ compiler }}/{{compiler_ver}}" 
   requires:
-    - "{{ name }}_{{ version }}"
+    - "{{ name }}_{{ version }}_{{compiler}}_{{compiler_ver}}"
     - rcic-module-support
