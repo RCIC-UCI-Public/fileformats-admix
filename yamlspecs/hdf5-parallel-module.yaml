@@ -5,10 +5,6 @@
 - package: hdf5 parallel module 
   pkgname: "{{ name }}_{{version}}_{{compiler}}_{{compiler_ver}}_{{mpi}}_{{mpi_ver}}-module"
   category: TOOLS
-#  description: |
-#     This is a parallel version compiled with gcc {{compiler_ver}} and {{mpi}} version {{mpi_ver}}.
-#     {{ base_description }}
-#     Environment var: HDF5_HOME = {{ root }}
   module:
     name: "{{ version }}"
     path: "{{ pkg_defaults.module.RCICmpath }}/{{category}}/{{name}}/{{compiler}}/{{compiler_ver}}/{{mpi}}/{{mpi_ver}}"

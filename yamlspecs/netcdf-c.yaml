@@ -2,7 +2,6 @@
 - package: netcdf 
   name: netcdf-c 
   versions: !include versions.yaml
-#  version: "4.7.0"
   version: "{{ versions.netcdfc }}"
   compiler: "{{ versions.compiler.name }}"
   compiler_ver: "{{ versions.compiler.version}}"
@@ -25,11 +24,7 @@
     modules: 
       - "{{compiler}}/{{compiler_ver}}"
       - "hdf5/{{compiler}}/{{compiler_ver}}/{{hdf5_ver}}"
-#    pkgmake: ./b2 
     target: 
-#  install:
-#    makeinstall: >
-#      ./b2 --prefix=$(ROOT)/{{ root }} install
   files:
     -  "{{ root }}"
   rpm: !include rpm.extras.yaml
