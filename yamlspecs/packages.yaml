@@ -1,0 +1,17 @@
+---
+bootstrap:
+system:
+  - openmpi-devel
+  - gcc-gfortran
+  - expat-devel
+build:
+  - udunits
+  - udunits-module
+  - hdf5
+  - hdf5-module
+  - hdf5-parallel
+  - hdf5-parallel-module
+  - netcdf-c
+  - netcdf-c-module
+manifest:
+  - "{{ build }}"
