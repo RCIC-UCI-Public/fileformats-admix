@@ -15,6 +15,7 @@
      high volume and complex data. HDF5 is portable and is extensible, allowing applications to 
      evolve in their use of HDF5. The HDF5 Technology suite includes tools and 
      applications for managing, manipulating, viewing, and analyzing data in the HDF5 format.
+     Environment var: HDF5_HOME = {{ root }}
   description: "{{ base_description }}"
   pkgname: "{{ name }}_{{ version }}_{{compiler}}_{{compiler_ver}}"
   src_tarball: "{{ name }}-{{ version}}.{{ extension }}"
