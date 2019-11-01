@@ -1,30 +1,35 @@
 ---
 - package: netcdf 
   name: netcdf-c 
-  version: "4.7.0"
+  versions: !include versions.yaml
+#  version: "4.7.0"
+  version: "{{ versions.netcdfc }}"
+  compiler: "{{ versions.compiler.name }}"
+  compiler_ver: "{{ versions.compiler.version}}"
+  hdf5_ver: "{{versions.hdf5.major}}.{{versions.hdf5.minor}}" 
   extension: tar.gz
   vendor_source: https://github.com/Unidata/netcdf-c/archive/v{{version}}.tar.gz 
   description: |
       The Unidata network Common Data Form (netCDF) version {{ version }} is an interface for
       scientific data access and a freely-distributed software library that provides an 
-      implementation of the interface. The netCDF library 
-      also defines a machine-independent format for representing scientific data. 
-      Together, the interface, library, and format support the creation, access, and 
-      sharing of scientific data. The current netCDF software provides C interfaces 
-      for applications and data. Separate software distributions available from Unidata 
-      provide Java, Fortran, Python, and 
-      C++ interfaces. They have been tested on various common platforms.
+      implementation of the interface. The netCDF library also defines a machine-independent 
+      format for representing scientific data. Together, the interface, library, and format 
+      support the creation, access, and sharing of scientific data. The current netCDF software
+      provides C interfaces for applications and data. Separate software distributions available
+      from Unidata provide Java, Fortran, Python, and C++ interfaces
   pkgname: "{{ name }}_{{ version }}"
   src_tarball: "{{ name }}-{{ version}}.{{ extension }}"
   src_dir: "{{ name }}-{{ version }}"
   root: "{{ pkg_defaults.app_path }}/{{ name }}/{{ version }}"
   build:
-    modules: "{{compiler}}/{{ compiler_version }}"
-    pkgmake: ./b2 
+    modules: 
+      - "{{compiler}}/{{compiler_ver}}"
+      - "hdf5/{{compiler}}/{{compiler_ver}}/{{hdf5_ver}}"
+#    pkgmake: ./b2 
     target: 
-  install:
-    makeinstall: >
-      ./b2 --prefix=$(ROOT)/{{ root }} install
+#  install:
+#    makeinstall: >
+#      ./b2 --prefix=$(ROOT)/{{ root }} install
   files:
     -  "{{ root }}"
   rpm: !include rpm.extras.yaml
