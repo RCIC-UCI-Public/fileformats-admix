@@ -6,5 +6,8 @@ java: "1.8.0"
 compiler: 
    name: gcc
    version: "4.8.5"
-netcdf-c: "4.7.0"
+netcdfc: "4.7.0"
 udunits: "2.2.26"
+mpi:
+   name: mpi 
+   version: openmpi-x86_64
