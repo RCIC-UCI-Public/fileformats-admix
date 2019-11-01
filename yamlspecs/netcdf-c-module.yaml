@@ -1,0 +1,22 @@
+# Builds the module for netcdf-c.
+!include netcdf-c.yaml
+!include /opt/rcic/include/rcic-module.yaml
+---
+- package: netcdf-c module 
+  pkgname: "{{ name }}_{{version}}_{{compiler}}_{{compiler_ver}}-module"
+  category: TOOLS
+  module:
+    name: "{{ version }}"
+    path: "{{ pkg_defaults.module.RCICmpath }}/{{category}}/{{name}}/{{compiler}}/{{compiler_ver}}"
+    prepend_path:
+      - "{{ pkg_defaults.module.prepend_path }}"
+      - -d " " LDFLAGS "-L{{root}}/lib"
+      - -d " " CPPFLAGS "-I{{root}}/include"
+    setenv:
+      - HDF5_HOME {{ root }}
+    prereq:
+      - "{{ compiler }}/{{compiler_ver}}" 
+      - "hdf5/{{compiler}}/{{compiler_ver}}/{{hdf5_ver}}"
+  requires:
+    - "{{ name }}_{{ version }}_{{compiler}}_{{compiler_ver}}"
+    - rcic-module-support
