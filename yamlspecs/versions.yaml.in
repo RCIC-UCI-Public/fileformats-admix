@@ -1,0 +1,13 @@
+---
+compiler: 
+   name: gcc
+   version: "4.8.5"
+java: "1.8.0"
+mpi:
+   name: mpi 
+   version: "@MPIVER@"
+hdf5: 
+   major: "1.10" 
+   minor: "5" 
+netcdfc: "4.7.0"
+udunits: "2.2.26"

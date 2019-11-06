@@ -22,13 +22,14 @@
   src_dir: "{{ name }}-{{ version }}"
   root: "{{ pkg_defaults.app_path }}/{{ name }}/{{compiler}}/{{compiler_ver}}/{{ version }}"
   build:
-    modules:
-       - java/{{versions.java}}
-       - "{{ compiler }}/{{compiler_ver}}"
+#    configure: ./configure --prefix={{root}} 
     configure_args: >
        --enable-fortran --enable-cxx --enable-java
        --enable-hl
        --enable-optimization=high
+    modules:
+       - java/{{versions.java}}
+       - "{{ compiler }}/{{compiler_ver}}"
     target: 
   files:
     -  "{{ root }}"

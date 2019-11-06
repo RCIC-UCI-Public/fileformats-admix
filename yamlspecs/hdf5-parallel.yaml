@@ -13,7 +13,7 @@
        - java/{{versions.java}}
        - "{{ compiler }}/{{compiler_ver}}"
        - "{{ mpi }}/{{mpi_ver}}"
-    configure_args: >
+    configure_args: |
        --enable-fortran --enable-cxx --enable-java
        --enable-optimization=high --enable-parallel
     target: 

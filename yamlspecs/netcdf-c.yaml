@@ -1,5 +1,5 @@
 ---
-- package: netcdf 
+- package: netcdf-c
   name: netcdf-c 
   versions: !include versions.yaml
   version: "{{ versions.netcdfc }}"
@@ -16,14 +16,14 @@
       support the creation, access, and sharing of scientific data. The current netCDF software
       provides C interfaces for applications and data. Separate software distributions available
       from Unidata provide Java, Fortran, Python, and C++ interfaces
-  pkgname: "{{ name }}_{{ version }}"
+  pkgname: "{{ name }}_{{ version }}_{{compiler}}_{{compiler_ver}}"
   src_tarball: "{{ name }}-{{ version}}.{{ extension }}"
   src_dir: "{{ name }}-{{ version }}"
-  root: "{{ pkg_defaults.app_path }}/{{ name }}/{{ version }}"
+  root: "{{ pkg_defaults.app_path }}/{{ name }}/{{compiler}}/{{compiler_ver}}/{{ version }}"
   build:
     modules: 
       - "{{compiler}}/{{compiler_ver}}"
-      - "hdf5/{{compiler}}/{{compiler_ver}}/{{hdf5_ver}}"
+      - "hdf5/{{hdf5_ver}}/{{compiler}}{{compiler_ver}}"
     target: 
   files:
     -  "{{ root }}"

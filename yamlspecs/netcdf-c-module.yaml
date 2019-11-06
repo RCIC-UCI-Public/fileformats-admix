@@ -3,20 +3,21 @@
 !include /opt/rcic/include/rcic-module.yaml
 ---
 - package: netcdf-c module 
-  pkgname: "{{ name }}_{{version}}_{{compiler}}_{{compiler_ver}}-module"
+  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}-module"
   category: TOOLS
   module:
-    name: "{{ version }}"
-    path: "{{ pkg_defaults.module.RCICmpath }}/{{category}}/{{name}}/{{compiler}}/{{compiler_ver}}"
+    logname: "{{name}}/{{version}}/{{compiler}}{{compiler_ver}}"
+    name: "{{compiler}}{{compiler_ver}}"
+    path: "{{pkg_defaults.module.RCICmpath}}/{{category}}/{{name}}/{{version}}"
     prepend_path:
-      - "{{ pkg_defaults.module.prepend_path }}"
+      - "{{pkg_defaults.module.prepend_path}}"
       - -d " " LDFLAGS "-L{{root}}/lib"
       - -d " " CPPFLAGS "-I{{root}}/include"
     setenv:
-      - HDF5_HOME {{ root }}
+      - HDF5_HOME {{root}}
     prereq:
-      - "{{ compiler }}/{{compiler_ver}}" 
-      - "hdf5/{{compiler}}/{{compiler_ver}}/{{hdf5_ver}}"
+      - "{{compiler}}/{{compiler_ver}}" 
+      - "hdf5/{{hdf5_ver}}/{{compiler}}{{compiler_ver}}"
   requires:
-    - "{{ name }}_{{ version }}_{{compiler}}_{{compiler_ver}}"
+    - "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}"
     - rcic-module-support
