@@ -4,9 +4,6 @@
 ---
 - package: "{{ name }} module"
   category: TOOLS
-  description: |
-     {{ base_description }}
-     Environment var: UDUNITS_HOME = {{ root }}
   module:
     setenv:
       - UDUNITS_HOME {{ root }}
