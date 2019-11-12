@@ -1,5 +1,4 @@
 ---
-bootstrap:
 system:
   - openmpi-devel
   - gcc-gfortran
