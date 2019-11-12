@@ -5,9 +5,10 @@
 - package: netcdf-c module 
   pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}-module"
   category: TOOLS
+  specs: "{{compiler}}.{{compiler_ver}}"
   module:
-    logname: "{{name}}/{{version}}/{{compiler}}{{compiler_ver}}"
-    name: "{{compiler}}{{compiler_ver}}"
+    logname: "{{name}}/{{version}}/{{specs}}"
+    name: "{{specs}}"
     path: "{{pkg_defaults.module.RCICmpath}}/{{category}}/{{name}}/{{version}}"
     prepend_path:
       - "{{pkg_defaults.module.prepend_path}}"
@@ -17,7 +18,7 @@
       - HDF5_HOME {{root}}
     prereq:
       - "{{compiler}}/{{compiler_ver}}" 
-      - "hdf5/{{hdf5_ver}}/{{compiler}}{{compiler_ver}}"
+      - "hdf5/{{hdf5_ver}}/{{specs}}"
   requires:
     - "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}"
     - rcic-module-support

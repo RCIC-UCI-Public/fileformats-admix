@@ -5,9 +5,10 @@
 - package: hdf5 module 
   pkgname: "{{ name }}_{{version}}_{{compiler}}_{{compiler_ver}}-module"
   category: TOOLS
+  specs: "{{compiler}}.{{compiler_ver}}"
   module:
-    logname: "{{name}}/{{version}}/{{compiler}}{{compiler_ver}}"
-    name: "{{compiler}}{{compiler_ver}}"
+    name: "{{specs}}"
+    logname: "{{name}}/{{version}}/{{specs}}"
     path: "{{ pkg_defaults.module.RCICmpath }}/{{category}}/{{name}}/{{version}}"
     prepend_path:
       - "{{ pkg_defaults.module.prepend_path }}"
@@ -21,4 +22,3 @@
   requires:
     - "{{ name }}_{{ version }}_{{compiler}}_{{compiler_ver}}"
     - rcic-module-support
-
