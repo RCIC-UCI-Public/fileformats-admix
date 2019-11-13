@@ -10,10 +10,12 @@ MPIVER = $(shell rpm -qi openmpi | awk -F ': ' '/^Version/{print $$NF}')
 versions.yaml: versions.yaml.in
 	sed 's/@MPIVER@/$(MPIVER)/' $^ > $@
 
-default: versions.yaml
+prep: versions.yaml
+
+default: prep
 	make -f $(THISMAKE) $(PKGS) 
 
-manifest: versions.yaml
+manifest: prep
 
-clean:
+clean: versions.yaml
 	/bin/rm -f versions.yaml
