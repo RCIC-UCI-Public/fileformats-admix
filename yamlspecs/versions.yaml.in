@@ -4,7 +4,7 @@ compiler:
    version: "4.8.5"
 java: "1.8.0"
 mpi:
-   name: mpi 
+   name: openmpi 
    version: "@MPIVER@"
 hdf5: 
    major: "1.10" 
