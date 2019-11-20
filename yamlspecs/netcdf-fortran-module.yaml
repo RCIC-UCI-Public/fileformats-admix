@@ -1,0 +1,26 @@
+# Builds the module for netcdf-fortran.
+!include netcdf-fortran.yaml
+!include /opt/rcic/include/rcic-module.yaml
+---
+- package: netcdf-fortran module 
+  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}-module"
+  category: TOOLS
+  specs: "{{compiler}}.{{compiler_ver}}"
+  instdir: "{{pkg_defaults.module.RCICmpath}}/{{category}}/{{name}}"
+  module:
+    logname: "{{name}}/{{version}}/{{specs}}"
+    name: "{{specs}}"
+    path: "{{instdir}}/{{version}}"
+    prepend_path:
+      - "{{pkg_defaults.module.prepend_path}}"
+      - -d " " LDFLAGS "-L{{root}}/lib"
+      - -d " " CPPFLAGS "-I{{root}}/include"
+    setenv:
+      - NFDIR {{root}}
+    prereq:
+       - "netcdf-c/{{netcdfc}}/{{compiler}}.{{compiler_ver}}"
+  requires:
+    - "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}"
+    - rcic-module-support
+  files:
+    - "{{instdir}}"
