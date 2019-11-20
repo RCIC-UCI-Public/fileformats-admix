@@ -6,11 +6,11 @@
   pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}-module"
   category: TOOLS
   specs: "{{compiler}}.{{compiler_ver}}"
-  instdir: "{{pkg_defaults.module.RCICmpath}}/{{category}}/{{name}}"
+  modinstdir: "{{pkg_defaults.module.RCICmpath}}/{{category}}/{{name}}"
   module:
     logname: "{{name}}/{{version}}/{{specs}}"
     name: "{{specs}}"
-    path: "{{instdir}}/{{version}}"
+    path: "{{modinstdir}}/{{version}}"
     prepend_path:
       - "{{pkg_defaults.module.prepend_path}}"
       - -d " " LDFLAGS "-L{{root}}/lib"
@@ -23,4 +23,4 @@
     - "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}"
     - rcic-module-support
   files:
-    - "{{instdir}}"
+    - "{{modinstdir}}"

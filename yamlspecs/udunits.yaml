@@ -17,4 +17,4 @@
          --with-gnu-ld
     target: 
   files:
-    -  "{{ root }}"
+    -  "{{ pkg_defaults.app_path }}/{{ name }}"

@@ -3,26 +3,25 @@
 !include /opt/rcic/include/rcic-module.yaml
 ---
 - package: hdf5 parallel module 
-  pkgname: "{{ name }}_{{version}}_{{compiler}}_{{compiler_ver}}_{{mpi}}_{{mpi_ver}}-module"
+  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}_{{mpi}}_{{mpi_ver}}-module"
   category: TOOLS
   specs: "{{compiler}}.{{compiler_ver}}-{{mpi}}.{{mpi_ver}}"
-  instdir: "{{pkg_defaults.module.RCICmpath}}/{{category}}/{{name}}"
+  modinstdir: "{{pkg_defaults.module.RCICmpath}}/{{category}}/{{name}}"
   module:
     logname: "{{name}}/{{version}}/{{specs}}"
     name: "{{specs}}"
-    path: "{{ instdir }}/{{version}}"
+    path: "{{modinstdir}}/{{version}}"
     prepend_path:
-      - "{{ pkg_defaults.module.prepend_path }}"
+      - "{{pkg_defaults.module.prepend_path}}"
       - -d " " LDFLAGS "-L{{root}}/lib"
       - -d " " CPPFLAGS "-I{{root}}/include"
     setenv:
-      - HDF5_HOME {{ root }}
+      - HDF5_HOME {{root}}
     prereq:
       - java/{{versions.java}}
-      - "{{ compiler }}/{{compiler_ver}}" 
-      - "{{ mpi }}/{{mpi_ver}}" 
+      - "{{mpi}}/{{mpi_ver}}" 
   requires:
-    - "{{ name }}_{{ version }}_{{compiler}}_{{compiler_ver}}_{{mpi}}_{{mpi_ver}}"
+    - "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}_{{mpi}}_{{mpi_ver}}"
     - rcic-module-support
   files:
-    - "{{instdir}}"
+    - "{{modinstdir}}"

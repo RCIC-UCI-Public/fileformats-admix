@@ -18,12 +18,11 @@
   pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}"
   src_tarball: "{{name}}-{{version}}.{{extension}}"
   src_dir: "{{name}}-{{version}}"
-  instpath: "{{pkg_defaults.app_path}}/{{name}}/{{version}}"
-  root: "{{instpath}}/{{compiler}}/{{compiler_ver}}"
+  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_ver}}"
   build:
     modules: 
       - "netcdf-c/{{netcdfc}}/{{compiler}}.{{compiler_ver}}"
     target: 
   files:
-    -  "{{instpath}}"
+    - "{{pkg_defaults.app_path}}/{{name}}"
   rpm: !include rpm.extras.yaml

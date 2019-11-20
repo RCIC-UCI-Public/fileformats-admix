@@ -2,35 +2,34 @@
 - package: hdf5 
   name: hdf5 
   versions: !include versions.yaml
-  version_major: "{{ versions.hdf5.major }}" 
-  version_minor: "{{ versions.hdf5.minor }}"
-  version: "{{ version_major }}.{{ version_minor }}"
-  compiler: "{{ versions.compiler.name }}"
-  compiler_ver: "{{ versions.compiler.version}}"
+  version_major: "{{versions.hdf5.major}}" 
+  version_minor: "{{versions.hdf5.minor}}"
+  version: "{{version_major}}.{{version_minor}}"
+  compiler: "{{versions.compiler.name}}"
+  compiler_ver: "{{versions.compiler.version}}"
   extension: tar.gz
-  vendor_source: https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-{{version_major}}/hdf5-{{version}}/src/hdf5-{{version}}.tar.gz 
+  vendor_source: https://support.hdfgroup.org/ftp/HDF5/releases/{{hdf5-version_major}}/hdf5-{{version}}/src/hdf5-{{version}}.tar.gz 
   base_description: |
      HDF5 is a data model, library, and file format for storing and managing data. It supports 
      an unlimited variety of datatypes, and is designed for flexible and efficient I/O and for 
      high volume and complex data. HDF5 is portable and is extensible, allowing applications to 
      evolve in their use of HDF5. The HDF5 Technology suite includes tools and 
      applications for managing, manipulating, viewing, and analyzing data in the HDF5 format.
-     Environment var: HDF5_HOME = {{ root }}
-  description: "{{ base_description }}"
-  pkgname: "{{ name }}_{{ version }}_{{compiler}}_{{compiler_ver}}"
-  src_tarball: "{{ name }}-{{ version}}.{{ extension }}"
-  src_dir: "{{ name }}-{{ version }}"
-  root: "{{ pkg_defaults.app_path }}/{{ name }}/{{compiler}}/{{compiler_ver}}/{{ version }}"
+     Environment var: HDF5_HOME = {{root}}
+  description: "{{base_description}}"
+  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}"
+  src_tarball: "{{name}}-{{version}}.{{extension}}"
+  src_dir: "{{name}}-{{version}}"
+  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_ver}}"
   build:
-#    configure: ./configure --prefix={{root}} 
     configure_args: >
        --enable-fortran --enable-cxx --enable-java
        --enable-hl
        --enable-optimization=high
     modules:
        - java/{{versions.java}}
-       - "{{ compiler }}/{{compiler_ver}}"
+       - "{{compiler}}/{{compiler_ver}}"
     target: 
   files:
-    -  "{{ root }}"
+    -  "{{pkg_defaults.app_path}}/{{name}}"
   rpm: !include rpm.extras.yaml
