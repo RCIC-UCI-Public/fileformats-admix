@@ -10,6 +10,8 @@ build:
   - hdf5-parallel-module
   - netcdf-c
   - netcdf-c-module
+  - netcdf-fortran
+  - netcdf-fortran-module
   - udunits
   - udunits-module
 manifest:

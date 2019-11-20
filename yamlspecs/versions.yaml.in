@@ -10,4 +10,5 @@ hdf5:
    major: "1.10" 
    minor: "5" 
 netcdfc: "4.7.0"
+netcdff: "4.5.2"
 udunits: "2.2.26"
