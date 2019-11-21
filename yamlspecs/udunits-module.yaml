@@ -2,8 +2,8 @@
 !include udunits.yaml
 !include /opt/rcic/include/rcic-module.yaml
 ---
-- package: "{{ name }} module"
+- package: "{{name}} module"
   category: TOOLS
   module:
     setenv:
-      - UDUNITS_HOME {{ root }}
+      - UDUNITS_HOME {{root}}
