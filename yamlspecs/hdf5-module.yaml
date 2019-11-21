@@ -23,6 +23,5 @@
   requires:
     - "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}"
     - rcic-module-support
-
   files:
     - "{{modinstdir}}"

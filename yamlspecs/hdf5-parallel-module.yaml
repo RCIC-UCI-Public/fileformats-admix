@@ -8,8 +8,8 @@
   specs: "{{compiler}}.{{compiler_ver}}-{{mpi}}.{{mpi_ver}}"
   modinstdir: "{{pkg_defaults.module.RCICmpath}}/{{category}}/{{name}}"
   module:
-    logname: "{{name}}/{{version}}/{{specs}}"
     name: "{{specs}}"
+    logname: "{{name}}/{{version}}/{{specs}}"
     path: "{{modinstdir}}/{{version}}"
     prepend_path:
       - "{{pkg_defaults.module.prepend_path}}"
@@ -18,7 +18,6 @@
     setenv:
       - HDF5_HOME {{root}}
     prereq:
-      - java/{{versions.java}}
       - "{{mpi}}/{{mpi_ver}}" 
   requires:
     - "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}_{{mpi}}_{{mpi_ver}}"

@@ -1,19 +1,17 @@
-!include hdf5.yaml
+!include hdf5-common.yaml
+!include /opt/rcic/include/rcic-package.yaml
 ---
-- package: hdf5-parallel
-  mpi: "{{versions.mpi.name}}"
-  mpi_ver: "{{versions.mpi.version}}"
+- package: hdf5 parallel
   pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}_{{mpi}}_{{mpi_ver}}"
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_ver}}/{{mpi}}/{{mpi_ver}}"
   description: |
     This is a parallel version compiled with gcc {{compiler_ver}} and {{mpi}} version {{mpi_ver}}.
     {{base_description}}
   build:
+    configure_args: >
+       --enable-fortran --enable-hl 
+       --enable-optimization=high
+       --enable-parallel
     modules:
-       - java/{{versions.java}}
-       - "{{compiler}}/{{compiler_ver}}"
        - "{{mpi}}/{{mpi_ver}}"
-    configure_args: |
-       --enable-fortran --enable-cxx --enable-java
-       --enable-optimization=high --enable-parallel
     target: 
