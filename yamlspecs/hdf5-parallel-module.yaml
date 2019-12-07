@@ -1,6 +1,6 @@
 # Builds the module for parallel version of hdf5. 
 !include hdf5-parallel.yaml
-!include /opt/rcic/include/rcic-module.yaml
+!include rcic-module.yaml
 ---
 - package: hdf5 parallel module 
   pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}_{{mpi}}_{{mpi_ver}}-module"

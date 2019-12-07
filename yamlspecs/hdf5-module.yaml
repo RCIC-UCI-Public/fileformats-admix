@@ -1,6 +1,6 @@
 # Builds the module for hdf5.
 !include hdf5.yaml
-!include /opt/rcic/include/rcic-module.yaml
+!include rcic-module.yaml
 ---
 - package: hdf5 module 
   pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}-module"

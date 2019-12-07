@@ -1,6 +1,6 @@
 # Builds the module for netcdf-fortran.
 !include netcdf-fortran.yaml
-!include /opt/rcic/include/rcic-module.yaml
+!include rcic-module.yaml
 ---
 - package: netcdf-fortran module 
   pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}-module"

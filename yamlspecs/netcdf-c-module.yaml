@@ -1,6 +1,6 @@
 # Builds the module for netcdf-c.
 !include netcdf-c.yaml
-!include /opt/rcic/include/rcic-module.yaml
+!include rcic-module.yaml
 ---
 - package: netcdf-c module 
   pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}-module"

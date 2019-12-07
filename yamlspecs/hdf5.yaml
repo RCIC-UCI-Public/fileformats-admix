@@ -1,5 +1,5 @@
 !include hdf5-common.yaml
-!include /opt/rcic/include/rcic-package.yaml
+!include rcic-package.yaml
 ---
 - package: hdf5 
   pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}"

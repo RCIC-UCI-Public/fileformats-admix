@@ -1,6 +1,6 @@
 # Builds the module for udunits.
 !include udunits.yaml
-!include /opt/rcic/include/rcic-module.yaml
+!include rcic-module.yaml
 ---
 - package: "{{name}} module"
   category: TOOLS
