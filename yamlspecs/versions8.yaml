@@ -1,0 +1,14 @@
+---
+compiler: 
+   name: gcc
+   version: "8.3.0"
+java: "1.8.0"
+mpi:
+   name: openmpi 
+   version: "1.10.7"
+hdf5: 
+   major: "1.10" 
+   minor: "5" 
+netcdfc: "4.7.0"
+netcdff: "4.5.2"
+udunits: "2.2.26"

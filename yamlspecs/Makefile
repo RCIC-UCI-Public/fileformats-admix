@@ -2,20 +2,20 @@
 # All rights reserved.	
 # This includes the Generic yaml2rpm Makefile - most packaging should
 # be able to use this.
-
-include $(YAML2RPM_HOME)/sys/Makefile
-
-MPIVER = $(shell rpm -qi openmpi | awk -F ': ' '/^Version/{print $$NF}')
-
-versions.yaml: versions.yaml.in
-	sed 's/@MPIVER@/$(MPIVER)/' $^ > $@
-
-prep: versions.yaml
-
-default: prep
-	make -f $(THISMAKE) $(PKGS) 
-
-manifest: prep
-
-clean: versions.yaml
-	/bin/rm -f versions.yaml
+SUBMAKES = MakefileSys Makefile8
+.DEFAULT_GOAL = default
+%.pkg:
+	for f in $(SUBMAKES); do \
+		if [ -f $@ ] ; then /bin/rm $@; fi; \
+		$(MAKE) -f $$f $@; \
+        done
+	
+manifest module-provides module-requires:
+	$(MAKE) -s -f MakefileSys $@
+	$(MAKE) -s -f Makefile8 $@
+%: 	
+	$(MAKE) -f MakefileSys $*
+	$(MAKE) -f MakefileSys clean versions.yaml
+	$(MAKE) -f Makefile8 $*
+	
+	

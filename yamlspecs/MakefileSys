@@ -1,0 +1,2 @@
+## This is the Makefile for the common case
+include Makefile.common

@@ -1,0 +1,3 @@
+# This the Makefile for updated version group
+include Makefile.common
+GENEXTRAS = --map='{"versions.yaml":"versions8.yaml"}'
