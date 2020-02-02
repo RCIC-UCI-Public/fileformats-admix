@@ -6,16 +6,16 @@
   pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}-module"
   category: TOOLS
   specs: "{{compiler}}.{{compiler_ver}}"
-  modinstdir: "{{pkg_defaults.module.RCICmpath}}/{{category}}/{{name}}"
+  modinstdir: "{{mod_defaults.path}}"
   module:
     name: "{{specs}}"
     logname: "{{name}}/{{version}}/{{specs}}"
     path: "{{modinstdir}}/{{version}}"
     prepend_path:
-      - "{{pkg_defaults.module.prepend_path}}"
-      - -d " " LDFLAGS "-L{{root}}/lib"
-      - -d " " CPPFLAGS "-I{{root}}/include"
+      - "{{mod_defaults.prepend_path}}"
+      - "{{mod_defaults.flagspath}}"
     setenv:
+      - "{{mod_defaults.setenv}}"
       - HDF5_HOME {{root}}
     prereq:
       - java/{{versions.java}}
