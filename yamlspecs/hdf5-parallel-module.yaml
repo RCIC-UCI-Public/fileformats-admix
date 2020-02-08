@@ -9,6 +9,7 @@
   modinstdir: "{{mod_defaults.path}}"
   module:
     name: "{{specs}}"
+    loadname: "{{module.logname}}"
     logname: "{{name}}/{{version}}/{{specs}}"
     path: "{{modinstdir}}/{{version}}"
     prepend_path:
