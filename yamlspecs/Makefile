@@ -10,6 +10,9 @@ SUBMAKES = MakefileSys Makefile8
 		$(MAKE) -f $$f $@; \
         done
 	
+ansible: 
+	$(MAKE) -s -f MakefileSys $@
+
 manifest module-provides module-requires:
 	$(MAKE) -s -f MakefileSys $@
 	$(MAKE) -s -f Makefile8 $@
