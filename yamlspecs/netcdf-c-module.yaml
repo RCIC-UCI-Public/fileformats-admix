@@ -18,6 +18,7 @@
     setenv:
       - "{{mod_defaults.setenv}}"
       - NCDIR {{root}}
+      - NETCDF {{root}}
     prereq:
       - "hdf5/{{hdf5_ver}}/{{specs}}"
   requires:

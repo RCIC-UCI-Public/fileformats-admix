@@ -7,6 +7,8 @@
   version: "{{versions.netcdff}}"
   compiler: "{{versions.compiler.name}}"
   compiler_ver: "{{versions.compiler.version}}"
+  parent: "{{pkg_defaults.app_path}}/netcdf-c"
+  root: "{{parent}}/{{netcdfc}}/{{compiler}}/{{compiler_ver}}"
   vendor_source: https://github.com/Unidata/netcdf-fortran/archive/v{{version}}.{{extension}}
   description: |
       The Unidata network Common Data Form (netCDF) is an interface for scientific data access 
@@ -16,7 +18,6 @@
       and sharing of scientif ic data. This software package provides Fortran application interfaces
       for accessing netCDF data. It depends on the netCDF C library, which must be installed first
   pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}"
-  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_ver}}"
   build:
     modules: 
       - "netcdf-c/{{netcdfc}}/{{compiler}}.{{compiler_ver}}"
