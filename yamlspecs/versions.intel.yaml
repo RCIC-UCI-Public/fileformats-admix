@@ -1,7 +1,7 @@
 ---
 compiler: 
-   name: gcc
-   version: "8.4.0"
+   name: intel
+   version: "2020u1"
 java: "1.8.0"
 mpi:
    name: openmpi 
@@ -14,4 +14,4 @@ netcdff: "4.5.2"
 udunits: "2.2.26"
 ioapi: "3.2"
 ioapi_git_tag: "2020111"
-ioapi_arch: "Linux2_x86_64"
+ioapi_arch: "Linux2_x86_64ifort"

@@ -1,0 +1,126 @@
+*** ioapi-3.2-2020111/ioapi/Makeinclude.Linux2_x86_64ifort	2020-04-20 08:20:35.000000000 -0700
+--- ioapi-3.2-2020111.new/ioapi/Makeinclude.Linux2_x86_64ifort	2020-04-30 18:19:50.954000000 -0700
+***************
+*** 8,14 ****
+  AR   = ar
+  CC   = icc
+  CXX  = icpc
+! FC   = ifort -auto -warn notruncated_source -Bstatic -static-intel
+  M4   = m4
+  LINK = $(CC)
+  
+--- 8,14 ----
+  AR   = ar
+  CC   = icc
+  CXX  = icpc
+! FC   = ifort -auto -warn notruncated_source 
+  M4   = m4
+  LINK = $(CC)
+  
+***************
+*** 24,31 ****
+  
+  OMPFLAGS  = -openmp      # for Intel compilers, version 15 or earlier
+  OMPLIBS   = -openmp
+! # OMPFLAGS  = -openmp -qopenmp
+! # OMPLIBS   = -openmp -qopenmp -qopenmp-link=static -shared_intel
+  
+  COPTFLAGS = -O3 ${MFLAGS}
+  FOPTFLAGS = -O3 -unroll -stack_temps -safe_cray_ptr \
+--- 24,31 ----
+  
+  OMPFLAGS  = -openmp      # for Intel compilers, version 15 or earlier
+  OMPLIBS   = -openmp
+! OMPFLAGS  = -qopenmp
+! OMPLIBS   = -qopenmp 
+  
+  COPTFLAGS = -O3 ${MFLAGS}
+  FOPTFLAGS = -O3 -unroll -stack_temps -safe_cray_ptr \
+***************
+*** 39,45 ****
+   -DIOAPI_NO_STDOUT=1 \
+   -DAVOID_FLUSH=1 -DBIT32=1
+  PARFLAGS  =
+! ARCHLIB   = -Bstatic
+  
+  # M4DEFFILE = $(PVM_ROOT)/conf/$(PVM_ARCH).m4
+  # PVMLIBS   = -L$(PVM_ROOT)/lib/$(PVM_ARCH) -lpvm3
+--- 39,45 ----
+   -DIOAPI_NO_STDOUT=1 \
+   -DAVOID_FLUSH=1 -DBIT32=1
+  PARFLAGS  =
+! ARCHLIB   = 
+  
+  # M4DEFFILE = $(PVM_ROOT)/conf/$(PVM_ARCH).m4
+  # PVMLIBS   = -L$(PVM_ROOT)/lib/$(PVM_ARCH) -lpvm3
+*** ioapi-3.2-2020111/ioapi/Makefile.nocpl.sed	2020-04-20 08:20:35.000000000 -0700
+--- ioapi-3.2-2020111.new/ioapi/Makefile.nocpl.sed	2020-05-01 12:49:47.521000000 -0700
+***************
+*** 192,197 ****
+--- 192,200 ----
+  ${FIXDIR}/PARMS3.EXT   ${FIXDIR}/STATE3.EXT
+  
+  LIB = libioapi.a
++ LIBSOC = libioapic.so
++ LIBSOF = libioapif.so
++ LIBS = ${LIB} ${LIBSOC} ${LIBSOF}
+  
+  MOBJ   = $(mSRC:.f=.o)   $(m90SRC:.f90=.o)   $(M90SRC:.F90=.o)
+  MODS   = $(mSRC:.f=.mod) $(m90SRC:.f90=.mod) $(M90SRC:.F90=.mod)
+***************
+*** 213,219 ****
+  	cd ${SRCDIR}; rm *.o core* *.mod *.MOD
+  
+  install: ${INSTDIR}
+! 	echo "Installing in ${INSTDIR}" ; cd ${OBJDIR}; cp ${LIB} ${MODS} ${INSTDIR}
+  
+  dir:
+  	mkdir -p ${OBJDIR}
+--- 216,222 ----
+  	cd ${SRCDIR}; rm *.o core* *.mod *.MOD
+  
+  install: ${INSTDIR}
+! 	echo "Installing in ${INSTDIR}" ; cd ${OBJDIR}; cp ${LIBS} ${MODS} ${INSTDIR}
+  
+  dir:
+  	mkdir -p ${OBJDIR}
+***************
+*** 278,283 ****
+--- 281,288 ----
+  #  multiple lines to avoid "command line too long":
+  
+  ${LIB}: mlib flib Flib clib
++ 	cd ${OBJDIR}; $(CC) -shared -o ${LIBSOC}  ${COBJ} ${fOBJ} ${FOBJ}
++ 	cd ${OBJDIR}; $(FC) -shared -o ${LIBSOF} ${MOBJ} 
+  
+  mlib: ${MOBJ}
+  	cd ${OBJDIR}; $(AR) $(ARFLAGS) ${LIB} ${MOBJ}
+*** ioapi-3.2-2020111/m3tools/Makefile.nocpl.sed	2020-04-20 08:20:35.000000000 -0700
+--- ioapi-3.2-2020111.new/m3tools/Makefile.nocpl.sed	2020-05-01 12:48:31.255000000 -0700
+***************
+*** 62,71 ****
+  #
+  #  Cygwin libraries need "-lnetcdff.dll -lnetcdf.dll" below
+  #
+!  LIBS = -L${OBJDIR} -lioapi NCFLIBS $(OMPLIBS) $(ARCHLIB) $(ARCHLIBS)
+  #LIBS = -L${OBJDIR} -lioapi -lnetcdf  $(OMPLIBS) $(ARCHLIB) $(ARCHLIBS)
+  #LIBS = -L${OBJDIR} -lioapi `nf-config --libs` `nc-config --libs` $(OMPLIBS) $(ARCHLIB) $(ARCHLIBS)
+  
+  VPATH = ${OBJDIR}
+  
+  
+--- 62,75 ----
+  #
+  #  Cygwin libraries need "-lnetcdff.dll -lnetcdf.dll" below
+  #
+! # Static-library Linking
+! #LIBS = -L${OBJDIR} -lioapic NCFLIBS $(OMPLIBS) $(ARCHLIB) $(ARCHLIBS)
+  #LIBS = -L${OBJDIR} -lioapi -lnetcdf  $(OMPLIBS) $(ARCHLIB) $(ARCHLIBS)
+  #LIBS = -L${OBJDIR} -lioapi `nf-config --libs` `nc-config --libs` $(OMPLIBS) $(ARCHLIB) $(ARCHLIBS)
+  
++ # Dynamic Library Linking
++  LIBS = -L${OBJDIR} -lioapic -lioapif  NCFLIBS $(OMPLIBS) $(ARCHLIB) $(ARCHLIBS)
++ 
+  VPATH = ${OBJDIR}
+  
+  

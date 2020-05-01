@@ -7,7 +7,7 @@
   version: "{{version_major}}.{{version_minor}}"
   compiler: "{{versions.compiler.name}}"
   compiler_ver: "{{versions.compiler.version}}"
-
+  release: 2
   mpi: "{{versions.mpi.name}}"
   mpi_ver: "{{versions.mpi.version}}"
 

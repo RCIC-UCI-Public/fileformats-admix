@@ -6,6 +6,7 @@
   version: "{{versions.netcdfc}}"
   compiler: "{{versions.compiler.name}}"
   compiler_ver: "{{versions.compiler.version}}"
+  release: 2
   hdf5_ver: "{{versions.hdf5.major}}.{{versions.hdf5.minor}}" 
   vendor_source: https://github.com/Unidata/netcdf-c/archive/v{{version}}.tar.gz 
   description: |
@@ -23,4 +24,5 @@
       - "{{compiler}}/{{compiler_ver}}"
       - "hdf5/{{hdf5_ver}}/{{compiler}}.{{compiler_ver}}"
     target: 
+    pkgmake: make -j 8
   rpm: !include rpm.extras.yaml

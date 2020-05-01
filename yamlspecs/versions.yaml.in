@@ -12,3 +12,6 @@ hdf5:
 netcdfc: "4.7.0"
 netcdff: "4.5.2"
 udunits: "2.2.26"
+ioapi: "3.2"
+ioapi_git_tag: "2020111"
+ioapi_arch: "Linux2_x86_64"

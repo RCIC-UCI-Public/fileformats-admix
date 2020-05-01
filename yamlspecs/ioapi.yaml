@@ -1,0 +1,51 @@
+!include rcic-package.yaml
+---
+- package: ioapi 
+  name: ioapi 
+  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
+  versions: !include versions.yaml
+  version: "{{versions.ioapi}}" 
+
+  ioapi_arch: "{{versions.ioapi_arch}}"
+  git_tag: "{{versions.ioapi_git_tag}}"
+  compiler: "{{versions.compiler.name}}"
+  compiler_version: "{{versions.compiler.version}}"
+
+  vendor_source: https://github.com/cjcoats/{{name}}-{{version}}/archive/{{git_tag}}.{{version}}.{{extension}}
+  description: |
+    ioapi {{version}} for {{compiler}} {{compiler_version}}.
+    This library provides Fortran and C APIs for environmental model data 
+    access together with related utility routines and tools for analysis and 
+    manipulation of data stored by way of that API.
+
+  src_dir: "{{name}}-{{version}}-{{git_tag}}"
+
+  build:
+    patchfile: "{{name}}-{{version}}.patch"
+    preconfigure: >
+       for d in ioapi m3tools; do (cd $$d; cp Makefile.nocpl Makefile); done;
+       cp Makefile.template Makefile;
+       make {{build.ncflibs}} {{build.configure_args}} configure
+
+    ncflibs: NCFLIBS="-lnetcdff -lnetcdf -lhdf5 -lz -lcurl $$LDFLAGS -L/usr/lib64"
+    configure: echo handled in preconfigure
+    configure_args: \
+         BASEDIR=$$(pwd) BIN={{ioapi_arch}} \
+         CPLMODE=nocpl INSTALL={{root}} BININST={{root}}/bin LIBINST={{root}}/lib
+    modules:
+       - "{{compiler}}/{{compiler_version}}"
+       - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}
+    pkgmake: make {{build.ncflibs}} {{build.configure_args}} 
+
+  ## Bind mount install
+  install:
+    makeinstall: >
+      if [ ! -d {{root}} ]; then mkdir -p {{root}}; fi;
+      mount --bind $(ROOT)/{{root}} {{root}};
+      make {{build.configure_args}}  install;
+      umount {{root}}
+
+  requires:
+       - "{{compiler}}_{{compiler_version}}"
+       - netcdf-c_{{versions.netcdfc}}_{{compiler}}_{{compiler_version}}
