@@ -2,8 +2,9 @@
 # All rights reserved.	
 # This includes the Generic yaml2rpm Makefile - most packaging should
 # be able to use this.
-SUBMAKES = MakefileSys Makefile8
+SUBMAKES = MakefileSys Makefile8 Makefile.intel
 .DEFAULT_GOAL = default
+
 %.pkg:
 	for f in $(SUBMAKES); do \
 		if [ -f $@ ] ; then /bin/rm $@; fi; \
@@ -16,9 +17,13 @@ ansible:
 manifest module-provides module-requires:
 	$(MAKE) -s -f MakefileSys $@
 	$(MAKE) -s -f Makefile8 $@
+	$(MAKE) -s -f Makefile.intel $@
+
 %: 	
 	$(MAKE) -f MakefileSys $*
 	$(MAKE) -f MakefileSys clean versions.yaml
 	$(MAKE) -f Makefile8 $*
+	$(MAKE) -f MakefileSys clean versions.yaml
+	$(MAKE) -f Makefile.intel $*
 	
 	

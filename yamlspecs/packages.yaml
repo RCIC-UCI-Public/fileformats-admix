@@ -3,7 +3,7 @@ system:
   - gcc-gfortran
   - expat-devel
   - openmpi-devel
-build:
+bootstrap:
   - hdf5
   - hdf5-module
   - hdf5-parallel
@@ -11,7 +11,11 @@ build:
   - netcdf-c
   - netcdf-c-module
   - netcdf-fortran
+build:
   - udunits
   - udunits-module
+  - ioapi
+  - ioapi-module
 manifest:
+  - "{{bootstrap}}"
   - "{{build}}"

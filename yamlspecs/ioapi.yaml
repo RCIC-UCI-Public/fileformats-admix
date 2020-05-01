@@ -17,7 +17,9 @@
     ioapi {{version}} for {{compiler}} {{compiler_version}}.
     This library provides Fortran and C APIs for environmental model data 
     access together with related utility routines and tools for analysis and 
-    manipulation of data stored by way of that API.
+    manipulation of data stored by way of that API. \\n
+    This version provides a static library: libioapi.a and two shared-object 
+    libraries libioapic.so and libioapif.so. \\n 
 
   src_dir: "{{name}}-{{version}}-{{git_tag}}"
 
@@ -26,17 +28,18 @@
     preconfigure: >
        for d in ioapi m3tools; do (cd $$d; cp Makefile.nocpl Makefile); done;
        cp Makefile.template Makefile;
-       make {{build.ncflibs}} {{build.configure_args}} configure
+       make {{build.ncflibs}} {{build.sharedflags}} {{build.configure_args}} configure
 
     ncflibs: NCFLIBS="-lnetcdff -lnetcdf -lhdf5 -lz -lcurl $$LDFLAGS -L/usr/lib64"
+    sharedflags: COPTFLAGS="-fpic -shared"  FOPTFLAGS="-fpic -shared"
     configure: echo handled in preconfigure
     configure_args: \
          BASEDIR=$$(pwd) BIN={{ioapi_arch}} \
-         CPLMODE=nocpl INSTALL={{root}} BININST={{root}}/bin LIBINST={{root}}/lib
+         CPLMODE=nocpl INSTALL={{root}} BININST={{root}}/bin LIBINST={{root}}/lib 
     modules:
        - "{{compiler}}/{{compiler_version}}"
        - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}
-    pkgmake: make {{build.ncflibs}} {{build.configure_args}} 
+    pkgmake: make {{build.ncflibs}} {{build.sharedflags}} {{build.configure_args}} 
 
   ## Bind mount install
   install:
