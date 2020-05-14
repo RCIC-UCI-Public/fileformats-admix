@@ -1,16 +1,16 @@
 # common settings for hdf5 and its paralle version
+!include rcic-package.yaml
 ---
 - name: hdf5 
   versions: !include versions.yaml
   version_major: "{{versions.hdf5.major}}" 
   version_minor: "{{versions.hdf5.minor}}"
   version: "{{version_major}}.{{version_minor}}"
-  compiler: "{{versions.compiler.name}}"
-  compiler_ver: "{{versions.compiler.version}}"
   release: 2
+  compiler: "{{versions.compiler.name}}"
+  compiler_version: "{{versions.compiler.version}}"
   mpi: "{{versions.mpi.name}}"
-  mpi_ver: "{{versions.mpi.version}}"
-
+  mpi_version: "{{versions.mpi.version}}"
   vendor_source: https://support.hdfgroup.org/ftp/HDF5/releases/{{hdf5-version_major}}/hdf5-{{version}}/src/hdf5-{{version}}.tar.gz 
   base_description: |
      HDF5 is a data model, library, and file format for storing and managing data. It supports 

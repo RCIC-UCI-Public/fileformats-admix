@@ -1,14 +1,16 @@
 ---
 compiler: 
-   name: intel
-   version: "2020u1"
-java: "1.8.0"
+  name: intel
+  version: "2020u1"
+java:
+  version: "1.8.0"
+  name: java8 
 mpi:
-   name: openmpi 
-   version: "4.0.3"
+  name: openmpi 
+  version: "4.0.3"
 hdf5: 
-   major: "1.10" 
-   minor: "5" 
+  major: "1.10" 
+  minor: "5" 
 netcdfc: "4.7.0"
 netcdff: "4.5.2"
 udunits: "2.2.26"

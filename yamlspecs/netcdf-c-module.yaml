@@ -4,25 +4,24 @@
 ---
 - package: netcdf-c module 
   shortname: netcdfc
-  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}-module"
   category: TOOLS
-  specs: "{{compiler}}.{{compiler_ver}}"
-  modinstdir: "{{mod_defaults.path}}"
+# specs: "{{compiler}}.{{compiler_ver}}"
+# modinstdir: "{{mod_defaults.path}}"
   module:
-    logname: "{{name}}/{{version}}/{{specs}}"
-    name: "{{specs}}"
-    path: "{{modinstdir}}/{{version}}"
-    prepend_path:
-      - "{{mod_defaults.prepend_path}}"
-      - "{{mod_defaults.flagspath}}"
+    <<: *ModuleCompiler
+#   logname: "{{name}}/{{version}}/{{specs}}"
+#   name: "{{specs}}"
+#   path: "{{modinstdir}}/{{version}}"
+#   prepend_path:
+#     - "{{mod_defaults.prepend_path}}"
+#     - "{{mod_defaults.flagspath}}"
     setenv:
-      - "{{mod_defaults.setenv}}"
+      - *Setenv
       - NCDIR {{root}}
       - NETCDF {{root}}
     prereq:
-      - "hdf5/{{hdf5_ver}}/{{specs}}"
-  requires:
-    - "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}"
-    - rcic-module-support
-  files:
-    - "{{modinstdir}}"
+      - *ModuleCompiler_prereq
+      - "hdf5/{{hdf5_version}}/{{compiler}}.{{compiler_version}}"
+    requires:
+      - *ModuleCompiler_requires
+      - "hdf5_{{hdf5_version}}_{{compiler}}_{{compiler_version}}-module"

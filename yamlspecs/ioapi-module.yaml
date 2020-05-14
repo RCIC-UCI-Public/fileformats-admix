@@ -3,25 +3,12 @@
 !include rcic-module.yaml
 ---
 - package: ioapi module 
-  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}-module"
   category: TOOLS
-  specs: "{{compiler}}.{{compiler_version}}"
-  modinstdir: "{{mod_defaults.path}}"
   module:
-    name: "{{specs}}"
-    loadname: "{{module.logname}}" 
-    logname: "{{name}}/{{version}}/{{specs}}"
-    path: "{{modinstdir}}/{{version}}"
-    prepend_path:
-      - "{{mod_defaults.prepend_path}}"
-      - "{{mod_defaults.flagspath}}"
+    <<: *ModuleCompiler
     prereq:
-      - "{{compiler}}/{{compiler_version}}" 
+      - *ModuleCompiler_prereq
       - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}  
-  requires:
-    - "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
-    - "{{compiler}}_{{compiler_version}}-module"
-    - netcdf-c_{{versions.netcdfc}}_{{compiler}}_{{compiler_version}}-module 
-    - rcic-module-support
-  files:
-    - "{{modinstdir}}"
+    requires:
+      - *ModuleCompiler_requires
+      - netcdf-c_{{versions.netcdfc}}_{{compiler}}_{{compiler_version}}-module 

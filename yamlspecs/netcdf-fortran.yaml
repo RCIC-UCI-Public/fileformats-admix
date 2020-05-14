@@ -2,14 +2,15 @@
 ---
 - package: netcdf-fortran
   name: netcdf-fortran 
+  baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   versions: !include versions.yaml
   netcdfc: "{{versions.netcdfc}}"
   version: "{{versions.netcdff}}"
   release: 2
   compiler: "{{versions.compiler.name}}"
-  compiler_ver: "{{versions.compiler.version}}"
+  compiler_version: "{{versions.compiler.version}}"
   parent: "{{pkg_defaults.app_path}}/netcdf-c"
-  root: "{{parent}}/{{netcdfc}}/{{compiler}}/{{compiler_ver}}"
+  root: "{{parent}}/{{netcdfc}}/{{compiler}}/{{compiler_version}}"
   vendor_source: https://github.com/Unidata/netcdf-fortran/archive/v{{version}}.{{extension}}
   description: |
       The Unidata network Common Data Form (netCDF) is an interface for scientific data access 
@@ -18,9 +19,8 @@
       scientific data.  Together, the interface, library, and format support the creation, access,
       and sharing of scientif ic data. This software package provides Fortran application interfaces
       for accessing netCDF data. It depends on the netCDF C library, which must be installed first
-  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}"
   build:
     modules: 
-      - "netcdf-c/{{netcdfc}}/{{compiler}}.{{compiler_ver}}"
+      - "netcdf-c/{{netcdfc}}/{{compiler}}.{{compiler_version}}"
     target: 
   rpm: !include rpm.extras.yaml

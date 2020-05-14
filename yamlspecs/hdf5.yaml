@@ -1,9 +1,8 @@
 !include hdf5-common.yaml
-!include rcic-package.yaml
 ---
 - package: hdf5 
-  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}"
-  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_ver}}"
+  baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
   description: "{{base_description}}"
   build:
     configure_args: >
@@ -11,7 +10,7 @@
        --enable-optimization=high
        --enable-hl
     modules:
-       - java/{{versions.java}}
-       - "{{compiler}}/{{compiler_ver}}"
+       - java/{{versions.java.version}}
+       - "{{compiler}}/{{compiler_version}}"
     pkgmake: make -j 8
     target: 
