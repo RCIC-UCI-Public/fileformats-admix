@@ -2,7 +2,7 @@
 ---
 - package: ioapi 
   name: ioapi 
-  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
   versions: !include versions.yaml
   version: "{{versions.ioapi}}" 

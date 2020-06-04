@@ -2,16 +2,20 @@
 ---
 - package: udunits 
   name: udunits 
+  baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
   versions: !include versions.yaml
   version: "{{versions.udunits}}" 
+  compiler: "{{versions.compiler.name}}"
+  compiler_version: "{{versions.compiler.version}}"
   release: 2
   vendor_source: ftp://ftp.unidata.ucar.edu/pub/udunits/udunits-{{version}}.{{extension}}
   description: |
     Data units manipulation library, udunits(3), and conversion program,
     udunits(1), UDUNITS. 
-    Environment var: UDUNITS_HOME = {{root}}
-  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}"
   build:
+    modules:
+      - "{{compiler}}/{{compiler_version}}"
     configure_args: >
          --with-gnu-ld
     target: 
