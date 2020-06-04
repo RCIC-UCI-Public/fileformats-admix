@@ -14,3 +14,6 @@
        - "{{compiler}}/{{compiler_version}}"
     pkgmake: make -j 8
     target: 
+
+  requires:
+     - java-{{versions.java.version}}-openjdk
