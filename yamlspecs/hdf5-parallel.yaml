@@ -1,5 +1,5 @@
-!include hdf5-common.yaml
 !include rcic-package.yaml
+!include hdf5-common.yaml
 ---
 - package: hdf5 parallel
   pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}_{{mpi}}_{{mpi_ver}}"

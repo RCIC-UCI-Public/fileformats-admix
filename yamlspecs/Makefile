@@ -5,7 +5,8 @@
 SUBMAKES = MakefileSys Makefile8 Makefile.intel
 .DEFAULT_GOAL = default
 
-%.pkg:
+%.pkg: 
+	make versions.yaml
 	for f in $(SUBMAKES); do \
 		if [ -f $@ ] ; then /bin/rm $@; fi; \
 		$(MAKE) -f $$f $@; \
@@ -20,10 +21,10 @@ manifest module-provides module-requires:
 	$(MAKE) -s -f Makefile.intel $@
 
 %: 	
-	$(MAKE) -f MakefileSys $*
+	$(MAKE) -f MakefileSys $@
 	$(MAKE) -f MakefileSys clean versions.yaml
-	$(MAKE) -f Makefile8 $*
+	$(MAKE) -f Makefile8 $@
 	$(MAKE) -f MakefileSys clean versions.yaml
-	$(MAKE) -f Makefile.intel $*
+	$(MAKE) -f Makefile.intel $@
 	
 	

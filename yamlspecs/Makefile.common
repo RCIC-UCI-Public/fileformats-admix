@@ -3,7 +3,7 @@
 # This includes the Generic yaml2rpm Makefile - most packaging should
 # be able to use this.
 
-ALL_TARGETS = versions.yaml default 
+ALL_TARGETS = versions.yaml bootstrap default 
 include $(YAML2RPM_HOME)/sys/Makefile
 
 MPIVER = $(shell rpm -qi openmpi | awk -F ': ' '/^Version/{print $$NF}')
