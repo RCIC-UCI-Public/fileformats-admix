@@ -5,6 +5,7 @@
 - package: netcdf-c module 
   shortname: netcdfc
   category: TOOLS
+  release: 2
 # specs: "{{compiler}}.{{compiler_ver}}"
 # modinstdir: "{{mod_defaults.path}}"
   module:
@@ -22,6 +23,3 @@
     prereq:
       - *ModuleCompiler_prereq
       - "hdf5/{{hdf5_version}}/{{compiler}}.{{compiler_version}}"
-    requires:
-      - *ModuleCompiler_requires
-      - "hdf5_{{hdf5_version}}_{{compiler}}_{{compiler_version}}-module"

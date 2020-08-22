@@ -1,6 +1,7 @@
 !include hdf5-common.yaml
 ---
 - package: hdf5 parallel
+  release: 3
   baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}_{{mpi}}_{{mpi_version}}"
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}/{{mpi}}/{{mpi_version}}"
   description: |
@@ -12,5 +13,5 @@
        --enable-optimization=high
        --enable-parallel
     modules:
-       - "{{mpi}}/{{mpi_version}}"
+       - "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}"
     target: 

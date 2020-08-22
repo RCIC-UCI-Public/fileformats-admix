@@ -4,6 +4,7 @@
 ---
 - package: ioapi module 
   category: TOOLS
+  release: 2
   module:
     <<: *ModuleCompiler
     prereq:
