@@ -3,6 +3,7 @@ system:
   - gcc-gfortran
   - expat-devel
   - openmpi-devel
+  - java-1.8.0-openjdk-devel
 bootstrap:
   - hdf5
   - hdf5-module
