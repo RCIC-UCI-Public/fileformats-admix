@@ -8,4 +8,5 @@
   module:
     <<: *ModuleCompiler
     setenv:
+      - *Setenv
       - UDUNITS_HOME {{root}}
