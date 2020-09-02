@@ -4,7 +4,7 @@
 ---
 - package: hdf5 module 
   category: TOOLS
-  release: 2
+  release: 3
   module:
     <<: *ModuleCompiler
     setenv:
