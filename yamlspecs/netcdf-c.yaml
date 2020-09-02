@@ -7,7 +7,7 @@
   version: "{{versions.netcdfc}}"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
-  release: 2
+  release: 3
   hdf5_version: "{{versions.hdf5.major}}.{{versions.hdf5.minor}}" 
   vendor_source: https://github.com/Unidata/netcdf-c/archive/v{{version}}.tar.gz 
   description: |

@@ -7,6 +7,7 @@
   versions: !include versions.yaml
   version: "{{versions.ioapi}}" 
 
+  release: 2
   ioapi_arch: "{{versions.ioapi_arch}}"
   git_tag: "{{versions.ioapi_git_tag}}"
   compiler: "{{versions.compiler.name}}"

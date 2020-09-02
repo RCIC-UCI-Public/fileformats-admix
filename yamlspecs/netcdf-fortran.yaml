@@ -6,7 +6,7 @@
   versions: !include versions.yaml
   netcdfc: "{{versions.netcdfc}}"
   version: "{{versions.netcdff}}"
-  release: 2
+  release: 3
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
   parent: "{{pkg_defaults.app_path}}/netcdf-c"

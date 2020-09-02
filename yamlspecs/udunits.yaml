@@ -8,7 +8,7 @@
   version: "{{versions.udunits}}" 
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
-  release: 2
+  release: 3
   vendor_source: ftp://ftp.unidata.ucar.edu/pub/udunits/udunits-{{version}}.{{extension}}
   description: |
     Data units manipulation library, udunits(3), and conversion program,
