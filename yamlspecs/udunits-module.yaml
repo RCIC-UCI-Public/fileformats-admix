@@ -4,7 +4,7 @@
 ---
 - package: "{{name}} module"
   category: TOOLS
-  release: 2
+  release: 3
   module:
     <<: *ModuleCompiler
     setenv:
