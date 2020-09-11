@@ -4,7 +4,7 @@
 ---
 - package: ioapi module 
   category: TOOLS
-  release: 2
+  release: 3
   module:
     <<: *ModuleCompiler
     prereq:
@@ -12,4 +12,4 @@
       - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}  
     requires:
       - *ModuleCompiler_requires
-      - netcdf-c_{{versions.netcdfc}}_{{compiler}}_{{compiler_version}}-module 
+      - "{{module.prereq}}" 

@@ -4,7 +4,7 @@
 ---
 - package: hdf5 module 
   category: TOOLS
-  release: 3
+  release: 4
   module:
     <<: *ModuleCompiler
     setenv:
@@ -14,5 +14,4 @@
       - java/{{versions.java.version}}
       - *ModuleCompiler_prereq
     requires:
-      - *ModuleCompiler_requires
-      - java/{{versions.java.version}}
+      - "{{module.prereq}}" 
