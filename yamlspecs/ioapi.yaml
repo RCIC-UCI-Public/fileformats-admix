@@ -7,7 +7,7 @@
   versions: !include versions.yaml
   version: "{{versions.ioapi}}" 
 
-  release: 2
+  release: 3
   ioapi_arch: "{{versions.ioapi_arch}}"
   git_tag: "{{versions.ioapi_git_tag}}"
   compiler: "{{versions.compiler.name}}"
@@ -45,9 +45,11 @@
   ## Bind mount install
   install:
     makeinstall: >
-      if [ ! -d {{root}} ]; then mkdir -p {{root}}; fi;
+      if [ ! -d $(ROOT){{root}}/include ]; then mkdir -p $(ROOT){{root}}/include; fi;
       mount --bind $(ROOT)/{{root}} {{root}};
       make {{build.configure_args}}  install;
+      for x in `find ioapi -name fixed_src -prune -o -name \*.h -o -name \*.EXT`; do echo $$x; 
+      install -m644 $$x {{root}}/include; done;
       umount {{root}}
 
   requires:
