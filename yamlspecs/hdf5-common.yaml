@@ -6,7 +6,7 @@
   version_major: "{{versions.hdf5.major}}" 
   version_minor: "{{versions.hdf5.minor}}"
   version: "{{version_major}}.{{version_minor}}"
-  release: 4
+  release: 6
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
   mpi: "{{versions.mpi.name}}"
@@ -18,6 +18,21 @@
      high volume and complex data. HDF5 is portable and is extensible, allowing applications to 
      evolve in their use of HDF5. The HDF5 Technology suite includes tools and applications for
      managing, manipulating, viewing, and analyzing data in the HDF5 format.
-     Environment var: HDF5_HOME = {{root}}
+     Environment var: HDF5_HOME = {{root}}. 
 
+  builddir: build
+  build:
+    preconfigure: mkdir {{builddir}}
+    configure_args: -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX={{root}} ..
+    configure: cd {{builddir}}; cmake 
+    modules:
+      - foundation
+      - "{{compiler}}/{{compiler_version}}"
+    pkgmake: >
+      cd {{builddir}};
+      make -j 8
+    target: 
+ 
+  install:
+    makeinstall: cd {{builddir}}; make DESTDIR=$(ROOT) install
   rpm: !include rpm.extras.yaml
