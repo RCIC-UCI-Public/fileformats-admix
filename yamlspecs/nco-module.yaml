@@ -1,0 +1,16 @@
+# Builds the module for nco.
+!include nco.yaml
+!include rcic-module.yaml
+---
+- package: nco module 
+  category: TOOLS
+  module:
+    <<: *ModuleCompiler
+    prereq:
+      - *ModuleCompiler_prereq
+      - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}  
+      - udunits/{{versions.udunits}}/{{compiler}}.{{compiler_version}}  
+      - gsl/{{versions.gsl}}/{{compiler}}.{{compiler_version}}  
+    requires:
+      - *ModuleCompiler_requires
+      - "{{module.prereq}}" 

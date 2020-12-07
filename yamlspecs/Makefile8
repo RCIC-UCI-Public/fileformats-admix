@@ -4,5 +4,6 @@ include Makefile.common
 # PKGS_PER_COMPILER and TARGETS_PER_COMPILER are defined in this included file
 include SubmakeDefs.mk
 
+PKGS_PER_COMPILER += nco nco-module
 MANIFEST = $(PKGS_PER_COMPILER)
 GENEXTRAS = --map='{"versions.yaml":"versions8.yaml"}'
