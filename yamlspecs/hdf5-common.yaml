@@ -6,7 +6,7 @@
   version_major: "{{versions.hdf5.major}}" 
   version_minor: "{{versions.hdf5.minor}}"
   version: "{{version_major}}.{{version_minor}}"
-  release: 6
+  release: 7
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
   mpi: "{{versions.mpi.name}}"
