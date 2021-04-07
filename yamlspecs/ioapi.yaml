@@ -46,11 +46,13 @@
   install:
     makeinstall: >
       if [ ! -d $(ROOT){{root}}/include ]; then mkdir -p $(ROOT){{root}}/include; fi;
+      mkdir -p {{root}};
       mount --bind $(ROOT)/{{root}} {{root}};
       make {{build.configure_args}}  install;
       for x in `find ioapi -name fixed_src -prune -o -name \*.h -o -name \*.EXT`; do echo $$x; 
       install -m644 $$x {{root}}/include; done;
-      umount {{root}}
+      umount {{root}};
+      rm -rf {{root}}
 
   requires:
        - "{{compiler}}_{{compiler_version}}"
