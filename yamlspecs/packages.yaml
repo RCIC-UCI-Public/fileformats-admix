@@ -6,6 +6,7 @@ system:
   - java-1.8.0-openjdk-devel
   - antlr-C++
   - antlr-python
+  - libcurl-devel
 bootstrap:
   - hdf5
   - hdf5-module
