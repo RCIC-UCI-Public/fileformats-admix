@@ -14,7 +14,7 @@ versions.yaml: versions.yaml.in
 prep: versions.yaml
 
 default: prep
-	make -f $(THISMAKE) $(PKGS) 
+	make -f $(THISMAKE) $(PKGS) $(TARGETS_PER_COMPILER)
 
 manifest: prep
 
