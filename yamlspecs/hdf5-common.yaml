@@ -6,7 +6,7 @@
   version_major: "{{versions.hdf5.major}}" 
   version_minor: "{{versions.hdf5.minor}}"
   version: "{{version_major}}.{{version_minor}}"
-  release: 7
+  release: 8
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
   mpi: "{{versions.mpi.name}}"
@@ -34,5 +34,12 @@
     target: 
  
   install:
-    makeinstall: cd {{builddir}}; make DESTDIR=$(ROOT) install
+    makeinstall: > 
+      cd {{builddir}}; 
+      make DESTDIR=$(ROOT) install;
+      pushd $(ROOT){{root}}/lib/pkgconfig;
+      for x in hdf5 hdf5_hl hdf5_cpp hdf5_cpp_hl; do
+      if [ -f $$x-{{version}}.pc ]; then ln -s $$x-{{version}}.pc $$x.pc; fi;
+      done;
+      popd
   rpm: !include rpm.extras.yaml
