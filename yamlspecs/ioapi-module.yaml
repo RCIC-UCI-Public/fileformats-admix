@@ -1,4 +1,3 @@
-# Builds the module for ioapi.
 !include ioapi.yaml
 !include rcic-module.yaml
 ---
@@ -7,9 +6,3 @@
   release: 3
   module:
     <<: *ModuleCompiler
-    prereq:
-      - *ModuleCompiler_prereq
-      - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}  
-    requires:
-      - *ModuleCompiler_requires
-      - "{{module.prereq}}" 

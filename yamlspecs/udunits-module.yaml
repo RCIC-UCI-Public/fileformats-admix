@@ -1,4 +1,3 @@
-# Builds the module for udunits.
 !include udunits.yaml
 !include rcic-module.yaml
 ---

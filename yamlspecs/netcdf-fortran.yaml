@@ -23,4 +23,6 @@
     modules: 
       - "netcdf-c/{{netcdfc}}/{{compiler}}.{{compiler_version}}"
     target: 
+  requires: 
+    - "{{build.modules}}"
   rpm: !include rpm.extras.yaml

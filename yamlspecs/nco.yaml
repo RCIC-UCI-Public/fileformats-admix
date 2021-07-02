@@ -9,7 +9,6 @@
   version: "{{versions.nco}}" 
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
-
   vendor_source: https://github.com/{{name}}/{{name}}/archive/{{version}}.{{extension}}
   description: |
     NCO {{version}} for {{compiler}} {{compiler_version}}.
@@ -27,7 +26,6 @@
        - udunits/{{versions.udunits}}/{{compiler}}.{{compiler_version}}
        - gsl/{{versions.gsl}}/{{compiler}}.{{compiler_version}}
     pkgmake: make -j 8 
-
   requires:
        - "{{compiler}}_{{compiler_version}}"
        - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}

@@ -6,13 +6,11 @@
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
   versions: !include versions.yaml
   version: "{{versions.ioapi}}" 
-
   release: 3
   ioapi_arch: "{{versions.ioapi_arch}}"
   git_tag: "{{versions.ioapi_git_tag}}"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
-
   vendor_source: https://github.com/cjcoats/{{name}}-{{version}}/archive/{{git_tag}}.{{version}}.{{extension}}
   description: |
     ioapi {{version}} for {{compiler}} {{compiler_version}}.
@@ -21,16 +19,13 @@
     manipulation of data stored by way of that API. \\n
     This version provides a static library: libioapi.a and two shared-object 
     libraries libioapic.so and libioapif.so. \\n 
-
   src_dir: "{{name}}-{{version}}-{{git_tag}}"
-
   build:
     patchfile: "{{name}}-{{version}}.patch"
     preconfigure: >
        for d in ioapi m3tools; do (cd $$d; cp Makefile.nocpl Makefile); done;
        cp Makefile.template Makefile;
        make {{build.ncflibs}} {{build.sharedflags}} {{build.configure_args}} configure
-
     ncflibs: NCFLIBS="-lnetcdff -lnetcdf -lhdf5 -lz -lcurl $$LDFLAGS -L/usr/lib64"
     sharedflags: COPTFLAGS="-fpic -shared"  FOPTFLAGS="-fpic -shared"
     configure: echo handled in preconfigure
@@ -41,7 +36,6 @@
        - "{{compiler}}/{{compiler_version}}"
        - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}
     pkgmake: make {{build.ncflibs}} {{build.sharedflags}} {{build.configure_args}} 
-
   ## Bind mount install
   install:
     makeinstall: >
@@ -53,7 +47,6 @@
       install -m644 $$x {{root}}/include; done;
       umount {{root}};
       rm -rf {{root}}
-
   requires:
        - "{{compiler}}_{{compiler_version}}"
        - netcdf-c_{{versions.netcdfc}}_{{compiler}}_{{compiler_version}}

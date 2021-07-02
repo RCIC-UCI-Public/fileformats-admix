@@ -1,4 +1,3 @@
-# Builds the module for parallel version of hdf5. 
 !include hdf5-parallel.yaml
 !include rcic-module.yaml
 ---
@@ -9,3 +8,5 @@
     setenv:
       - *Setenv
       - HDF5_HOME {{root}}
+    prereq:
+      - "{{build.base_modules}}"

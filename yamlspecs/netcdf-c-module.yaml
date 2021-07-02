@@ -1,4 +1,3 @@
-# Builds the module for netcdf-c.
 !include netcdf-c.yaml
 !include rcic-module.yaml
 ---
@@ -12,9 +11,3 @@
       - *Setenv
       - NCDIR {{root}}
       - NETCDF {{root}}
-    prereq:
-      - *ModuleCompiler_prereq
-      - "hdf5/{{hdf5_version}}/{{compiler}}.{{compiler_version}}"
-    requires:
-      - *ModuleCompiler_requires
-      - "{{module.prereq}}"

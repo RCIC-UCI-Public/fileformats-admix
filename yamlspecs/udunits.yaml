@@ -18,4 +18,5 @@
       - "{{compiler}}/{{compiler_version}}"
     configure_args: >
          --with-gnu-ld
-    target: 
+  requires:
+      - "{{compiler}}_{{compiler_version}}"

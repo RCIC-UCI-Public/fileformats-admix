@@ -23,6 +23,8 @@
     modules: 
       - "{{compiler}}/{{compiler_version}}"
       - "hdf5/{{hdf5_version}}/{{compiler}}.{{compiler_version}}"
-    target: 
     pkgmake: make -j 8
+  requires: 
+      - "{{compiler}}_{{compiler_version}}"
+      - "hdf5_{{hdf5_version}}_{{compiler}}_{{compiler_version}}"
   rpm: !include rpm.extras.yaml

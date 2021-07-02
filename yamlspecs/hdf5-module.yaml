@@ -1,4 +1,3 @@
-# Builds the module for hdf5.
 !include hdf5.yaml
 !include rcic-module.yaml
 ---
@@ -11,7 +10,4 @@
       - *Setenv
       - HDF5_HOME {{root}}
     prereq:
-      - java/{{versions.java.version}}
-      - *ModuleCompiler_prereq
-    requires:
-      - "{{module.prereq}}" 
+      - "{{build.base_modules}}"

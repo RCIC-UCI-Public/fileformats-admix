@@ -6,11 +6,13 @@
   description: "{{base_description}}"
   build:
     configure_args: -DCMAKE_BUILD_TYPE=Release -DHDF5_BUILD_FORTRAN:BOOL=ON -DHDF5_BUILD_CPP_LIB:BOOL=ON -DHDF5_BUILD_JAVA:BOOL=ON -DHDF5_ENABLE_Z_LIB_SUPPORT=ON -DCMAKE_INSTALL_PREFIX={{root}} ..
-    modules:
-       - foundation
+    base_modules:
        - java/{{versions.java.version}}
        - "{{compiler}}/{{compiler_version}}"
+    modules:
+       - foundation
+       - "{{build.base_modules}"
     pkgmake: make -j 8
-    target: 
   requires:
      - java-{{versions.java.version}}-openjdk
+     - "{{compiler}}_{{compiler_version}}"
