@@ -1,4 +1,5 @@
 !include rcic-package.yaml
+!include rpm.yaml
 ---
 - package: netcdf-fortran
   name: netcdf-fortran 
@@ -25,4 +26,3 @@
     target: 
   requires: 
     - "{{build.modules}}"
-  rpm: !include rpm.extras.yaml

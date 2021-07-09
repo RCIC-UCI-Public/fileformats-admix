@@ -1,5 +1,6 @@
 # common settings for hdf5 and its paralle version
 !include rcic-package.yaml
+!include rpm.yaml
 ---
 - name: hdf5 
   versions: !include versions.yaml
@@ -39,4 +40,3 @@
       if [ -f $$x-{{version}}.pc ]; then ln -s $$x-{{version}}.pc $$x.pc; fi;
       done;
       popd
-  rpm: !include rpm.extras.yaml
