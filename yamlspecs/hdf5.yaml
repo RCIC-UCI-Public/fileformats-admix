@@ -11,7 +11,7 @@
        - "{{compiler}}/{{compiler_version}}"
     modules:
        - foundation
-       - "{{build.base_modules}"
+       - "{{build.base_modules}}"
     pkgmake: make -j 8
   requires:
      - java-{{versions.java.version}}-openjdk
