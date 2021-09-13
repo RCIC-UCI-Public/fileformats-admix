@@ -1,9 +1,0 @@
-# This the Makefile for updated version group
-include Makefile.common
-
-PKGS_PER_COMPILER = nco nco-module
-# PKGS_PER_COMPILER and TARGETS_PER_COMPILER added/to defined in this included file
-include SubmakeDefs.mk
-
-MANIFEST = $(PKGS_PER_COMPILER)
-GENEXTRAS = --map='{"versions.yaml":"versions8.yaml"}'

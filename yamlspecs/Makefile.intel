@@ -1,9 +1,0 @@
-# This the Makefile for updated version group
-include Makefile.common
-
-# PKGS_PER_COMPILER and TARGETS_PER_COMPILER are defined in this included file
-include SubmakeDefs.mk
-
-GENEXTRAS = --map='{"versions.yaml":"versions.intel.yaml"}'
-MANIFEST = $(PKGS_PER_COMPILER)
-

@@ -23,3 +23,6 @@ build:
 manifest:
   - "{{bootstrap}}"
   - "{{build}}"
+sets:
+  - gcc8
+  - intel

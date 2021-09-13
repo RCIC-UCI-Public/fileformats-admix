@@ -2,29 +2,18 @@
 # All rights reserved.	
 # This includes the Generic yaml2rpm Makefile - most packaging should
 # be able to use this.
-SUBMAKES = MakefileSys Makefile8 Makefile.intel
-.DEFAULT_GOAL = default
 
-%.pkg: 
-	make versions.yaml
-	for f in $(SUBMAKES); do \
-		if [ -f $@ ] ; then /bin/rm $@; fi; \
-		$(MAKE) -f $$f $@; \
-        done
-	
-ansible: 
-	$(MAKE) -s -f MakefileSys $@
+ALL_TARGETS = versions.yaml bootstrap default 
+manifest buildall :: prep
 
-manifest module-provides module-requires:
-	$(MAKE) -s -f MakefileSys $@
-	$(MAKE) -s -f Makefile8 $@
-	$(MAKE) -s -f Makefile.intel $@
+include $(YAML2RPM_HOME)/sys/Makefile
 
-%: 	
-	$(MAKE) -f MakefileSys $@
-	$(MAKE) -f MakefileSys clean versions.yaml
-	$(MAKE) -f Makefile8 $@
-	$(MAKE) -f MakefileSys clean versions.yaml
-	$(MAKE) -f Makefile.intel $@
-	
-	
+MPIVER = $(shell rpm -qi openmpi | awk -F ': ' '/^Version/{print $$NF}')
+
+versions.yaml: versions.yaml.in
+	sed 's/@MPIVER@/$(MPIVER)/' $^ > $@
+
+prep: versions.yaml
+
+clean: versions.yaml
+	/bin/rm -f versions.yaml

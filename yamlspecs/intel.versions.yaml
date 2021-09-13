@@ -1,0 +1,8 @@
+!include versions.yaml
+---
+compiler: 
+  name: intel
+  version: "2020u1"
+mpi:
+  name: openmpi 
+  version: "4.0.3"
