@@ -16,5 +16,4 @@
        - foundation
        - "{{build.base_modules}}"
   requires:
-    - java_{{versions.java.version}}
-    - "{{mpi}}_{{mpi_version}}_{{compiler}}_{{compiler_version}}"
+    - "{{build.base_modules}}"

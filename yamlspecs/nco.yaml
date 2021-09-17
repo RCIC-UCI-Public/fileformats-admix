@@ -26,6 +26,7 @@
        - udunits/{{versions.udunits}}/{{compiler}}.{{compiler_version}}
        - gsl/{{versions.gsl}}/{{compiler}}.{{compiler_version}}
     pkgmake: make -j 8 
+    configure: ./configure
   requires:
        - "{{compiler}}_{{compiler_version}}"
        - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}

@@ -16,7 +16,8 @@
   build:
     modules:
       - "{{compiler}}/{{compiler_version}}"
+    configure: ./configure
     configure_args: >
-         --with-gnu-ld
+         --with-gnu-ld --prefix={{root}}
   requires:
       - "{{compiler}}_{{compiler_version}}"
