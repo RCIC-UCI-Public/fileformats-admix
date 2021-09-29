@@ -7,13 +7,8 @@
     This is a parallel version compiled with gcc {{compiler_version}} and {{mpi}} version {{mpi_version}}.
     {{base_description}}
   build:
-    configure_args: -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX={{root}}  -DHDF5_BUILD_FORTRAN:BOOL=ON  -DHDF5_BUILD_CPP_LIB:BOOL=OFF  -DHDF5_BUILD_JAVA:BOOL=ON -DHDF5_ENABLE_PARALLEL:BOOL=ON ..
-
-    base_modules:
-       - java/{{versions.java.version}}
-       - "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}"
-    modules:
-       - foundation
-       - "{{build.base_modules}}"
-  requires:
-    - "{{build.base_modules}}"
+    configure_args: -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX={{root}} -DHDF5_BUILD_FORTRAN:BOOL=ON -DHDF5_BUILD_CPP_LIB:BOOL=OFF  -DHDF5_BUILD_JAVA:BOOL=ON -DHDF5_ENABLE_PARALLEL:BOOL=ON ..
+    base_compiler:
+      - "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}"
+  base_requires:
+    - "{{mpi}}_{{mpi_version}}_{{compiler}}_{{compiler_version}}"

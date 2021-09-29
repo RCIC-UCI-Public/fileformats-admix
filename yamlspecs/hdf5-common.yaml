@@ -2,35 +2,44 @@
 !include rcic-package.yaml
 !include rpm.yaml
 ---
-- name: hdf5 
+- package: hdf5
+  name: hdf5 
   versions: !include versions.yaml
-  version_major: "{{versions.hdf5.major}}" 
-  version_minor: "{{versions.hdf5.minor}}"
-  version: "{{version_major}}.{{version_minor}}"
+  version_major: "{{versions.hdf5_major}}" 
+  version: "{{versions.hdf5}}"
   release: 8
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
   mpi: "{{versions.mpi.name}}"
   mpi_version: "{{versions.mpi.version}}"
-  vendor_source: https://support.hdfgroup.org/ftp/HDF5/releases/{{hdf5-version_major}}/hdf5-{{version}}/src/hdf5-{{version}}.tar.gz 
+  vendor_source: https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-{{version_major}}/hdf5-{{version}}/src/hdf5-{{version}}.tar.gz 
   base_description: |
      HDF5 is a data model, library, and file format for storing and managing data. It supports 
      an unlimited variety of datatypes, and is designed for flexible and efficient I/O and for 
      high volume and complex data. HDF5 is portable and is extensible, allowing applications to 
      evolve in their use of HDF5. The HDF5 Technology suite includes tools and applications for
      managing, manipulating, viewing, and analyzing data in the HDF5 format.
-     Environment var: HDF5_HOME = {{root}}. 
+     Environment variable HDF5_HOME = {{root}}. 
   builddir: build
   build:
     preconfigure: mkdir {{builddir}}
-    configure_args: -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX={{root}} ..
     configure: cd {{builddir}}; cmake 
+    base_compiler:
+      - "{{compiler}}/{{compiler_version}}"
+    base_modules:
+      - java/{{versions.java}}
+      - "{{build.base_compiler}}"
     modules:
       - foundation
-      - "{{compiler}}/{{compiler_version}}"
+      - "{{build.base_modules}}"
     pkgmake: >
       cd {{builddir}};
       make -j 8
+  base_requires:
+    - "{{compiler}}_{{compiler_version}}"
+  requires:
+    - java-{{versions.java}}-openjdk
+    - "{{base_requires}}"
   install:
     makeinstall: > 
       cd {{builddir}}; 
