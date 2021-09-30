@@ -9,7 +9,7 @@
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
   release: 3
-  hdf5_version: "{{versions.hdf5.major}}.{{versions.hdf5.minor}}" 
+  hdf5_version: "{{versions.hdf5}}"
   vendor_source: https://github.com/Unidata/netcdf-c/archive/v{{version}}.tar.gz 
   description: |
       The Unidata network Common Data Form (netCDF) version {{version}} is an interface for
