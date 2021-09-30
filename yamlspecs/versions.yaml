@@ -1,0 +1,17 @@
+!include site.yaml
+---
+compiler: 
+  version: "4.8.5"
+java: "1.8.0"
+mpi:
+  version: "1.10.7"
+hdf5: "1.10.5"
+hdf5_major: "1.10" 
+netcdfc: "4.7.0"
+netcdff: "4.5.2"
+udunits: "2.2.26"
+ioapi: "3.2"
+ioapi_git_tag: "2020111"
+ioapi_arch: "Linux2_x86_64"
+gsl: "2.6"
+nco: "4.9.6"
