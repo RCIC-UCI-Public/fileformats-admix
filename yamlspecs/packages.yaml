@@ -26,3 +26,4 @@ manifest:
 sets:
   - gcc8
   - intel
+  - nco
