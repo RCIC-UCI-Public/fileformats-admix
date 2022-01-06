@@ -22,10 +22,10 @@
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
   build:
     modules: 
-      - "{{compiler}}/{{compiler_version}}"
       - "hdf5/{{hdf5_version}}/{{compiler}}.{{compiler_version}}"
+      - "{{compiler}}/{{compiler_version}}"
     pkgmake: make -j 8
     configure: ./configure
   requires: 
-      - "{{compiler}}_{{compiler_version}}"
       - "hdf5_{{hdf5_version}}_{{compiler}}_{{compiler_version}}"
+      - "{{compiler}}_{{compiler_version}}"

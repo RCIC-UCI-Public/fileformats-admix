@@ -1,11 +1,12 @@
 ---
+site: !include site.yaml
 system:
   - gcc-gfortran
   - expat-devel
   - openmpi-devel
   - java-1.8.0-openjdk-devel
-  - antlr-C++
-  - antlr-python
+  - !ifeq "{{site.os_release}},8,,antlr-python"
+  - !ifeq "{{site.os_release}},8,,antlr-C++"
   - libcurl-devel
 bootstrap:
   - hdf5

@@ -12,3 +12,5 @@
       - "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}"
   base_requires:
     - "{{mpi}}_{{mpi_version}}_{{compiler}}_{{compiler_version}}"
+  # Needed in RHEL8 to stop conflict with hdf5 w/o MPI on build IDs.
+  rpmBuildIdLinks: none

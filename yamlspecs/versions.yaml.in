@@ -1,7 +1,7 @@
 !include site.yaml
 ---
 compiler: 
-  version: "4.8.5"
+  version: "{{versions.compiler_sys.version}}"
 java: "1.8.0"
 mpi:
   version: "@MPIVER@"
@@ -14,3 +14,4 @@ ioapi: "3.2"
 ioapi_git_tag: "2020111"
 ioapi_arch: "Linux2_x86_64"
 nco: "4.9.6"
+gsl: "2.6"

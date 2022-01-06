@@ -21,14 +21,16 @@
     NCO is fast, powerful, and free.
   build:
     modules:
-       - "{{compiler}}/{{compiler_version}}"
        - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}
+       - hdf5/{{versions.hdf5}}/{{compiler}}.{{compiler_version}}
        - udunits/{{versions.udunits}}/{{compiler}}.{{compiler_version}}
        - gsl/{{versions.gsl}}/{{compiler}}.{{compiler_version}}
+       - "{{compiler}}/{{compiler_version}}"
     pkgmake: make -j 8 
     configure: ./configure
   requires:
-       - "{{compiler}}_{{compiler_version}}"
        - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}
+       - hdf5/{{versions.hdf5}}/{{compiler}}.{{compiler_version}}
        - udunits/{{versions.udunits}}/{{compiler}}.{{compiler_version}}
        - gsl/{{versions.gsl}}/{{compiler}}.{{compiler_version}}
+       - "{{compiler}}_{{compiler_version}}"
