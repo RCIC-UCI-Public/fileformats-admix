@@ -21,3 +21,5 @@
          --with-gnu-ld --prefix={{root}}
   requires:
       - "{{compiler}}_{{compiler_version}}"
+  rpm:
+    extras: "%define __brp_mangle_shebangs /bin/echo turn off shebang mangling"
