@@ -11,23 +11,28 @@
   git_tag: "{{versions.ioapi_git_tag}}"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
-  vendor_source: https://github.com/cjcoats/{{name}}-{{version}}/archive/{{git_tag}}.{{version}}.{{extension}}
+  vendor_source: https://github.com/cjcoats/{{name}}-{{version}}/archive/refs/tags/{{git_tag}}.{{extension}}
   description: |
-    ioapi {{version}} for {{compiler}} {{compiler_version}}.
+    ioapi {{version}} {git tag {{git_tag}}) for {{compiler}} {{compiler_version}}.
     This library provides Fortran and C APIs for environmental model data 
     access together with related utility routines and tools for analysis and 
     manipulation of data stored by way of that API. \\n
-    This version provides a static library: libioapi.a and two shared-object 
-    libraries libioapic.so and libioapif.so. \\n 
+    This version provides a static library libioapi.a and two shared-object
+    libraries libioapic.so and libioapif.so.
+  src_tarball: "{{name}}-{{version}}-{{git_tag}}.{{extension}}"
   src_dir: "{{name}}-{{version}}-{{git_tag}}"
+  # define all extra build flags for configure and make
+  ncflibs: NCFLIBS="-lnetcdff -lnetcdf -lhdf5 -lz -lcurl $$LDFLAGS -L/usr/lib64"
+  sharedCflags: COPTFLAGS="-fpic -shared"
+  fort_old: FOPTFLAGS="-fpic -shared"
+  fort_new: FOPTFLAGS="-fpic -shared -fallow-argument-mismatch"
+  sharedFflags: !ifeq "{{compiler}}_{{compiler_version}},gcc_11.2.0,{{fort_new}},{{fort_old}}"
   build:
     patchfile: "{{name}}-{{version}}.patch"
     preconfigure: >
        for d in ioapi m3tools; do (cd $$d; cp Makefile.nocpl Makefile); done;
        cp Makefile.template Makefile;
-       make {{build.ncflibs}} {{build.sharedflags}} {{build.configure_args}} configure
-    ncflibs: NCFLIBS="-lnetcdff -lnetcdf -lhdf5 -lz -lcurl $$LDFLAGS -L/usr/lib64"
-    sharedflags: COPTFLAGS="-fpic -shared"  FOPTFLAGS="-fpic -shared"
+       make {{ncflibs}} {{sharedCflags}} {{sharedFflags}} {{build.configure_args}} configure
     configure: echo handled in preconfigure
     configure_args: \
          BASEDIR=$$(pwd) BIN={{ioapi_arch}} \
@@ -35,7 +40,7 @@
     modules:
        - "{{compiler}}/{{compiler_version}}"
        - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}
-    pkgmake: make {{build.ncflibs}} {{build.sharedflags}} {{build.configure_args}} 
+    pkgmake: make {{ncflibs}} {{sharedCflags}} {{sharedFflags}} {{build.configure_args}}
   ## Bind mount install
   install:
     makeinstall: >
@@ -50,3 +55,9 @@
   requires:
        - "{{compiler}}_{{compiler_version}}"
        - netcdf-c_{{versions.netcdfc}}_{{compiler}}_{{compiler_version}}
+
+# NOTE: when compiling with gcc v.11 have multiple errors:
+#    Error: Rank mismatch between actual argument at (1) and actual argument at (2)
+# This is a result of more stringent argument checking by newer gfortran (as of v.10)
+# To downgrade errors to warnigns add -fallow-argument-mismatch to FORTFLAGS.
+# See details in https://gcc.gnu.org/gcc-10/porting_to.html
