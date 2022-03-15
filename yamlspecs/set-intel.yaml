@@ -1,3 +1,9 @@
 !include packages.yaml
 ---
 versions: versions-intel.yaml
+bootstrap:
+  - "{{bootstrap0}}"
+  - "{{bootstrap1}}"
+build:
+  - ioapi
+  - ioapi-module

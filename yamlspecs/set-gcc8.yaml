@@ -1,3 +1,11 @@
 !include packages.yaml
 ---
 versions: versions-gcc8.yaml
+bootstrap:
+  - "{{bootstrap0}}"
+  - "{{bootstrap1}}"
+build:
+  - ioapi
+  - ioapi-module
+  - nco
+  - nco-module

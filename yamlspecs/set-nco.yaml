@@ -1,6 +1,0 @@
-!include packages.yaml
----
-versions: versions-gcc8.yaml
-build:
-  - nco
-  - nco-module
