@@ -1,5 +1,0 @@
-# Common MPI version for all compilers but system gcc
----
-mpi:
-  name: openmpi 
-  version: "4.0.3"

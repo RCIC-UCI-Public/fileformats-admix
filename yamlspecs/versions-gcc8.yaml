@@ -1,7 +1,9 @@
 ## GCC8 and Openmpi 4.0.3
 !include versions.yaml
-!include mpi.versions.yaml
 ---
 compiler: 
   name: gcc
   version: "8.4.0"
+mpi:
+  name: openmpi
+  version: "4.0.3"
