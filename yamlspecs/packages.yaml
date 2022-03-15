@@ -9,22 +9,25 @@ system:
   - !ifeq "{{site.os_release}},8,,antlr-C++"
   - libcurl-devel
 bootstrap:
+  - "{{bootstrap0}}"
+bootstrap0:
   - hdf5
   - hdf5-module
   - hdf5-parallel
   - hdf5-parallel-module
+bootstrap1:
   - netcdf-c
   - netcdf-c-module
   - netcdf-fortran
-build:
   - udunits
   - udunits-module
-  - ioapi
-  - ioapi-module
+build:
 manifest:
   - "{{bootstrap}}"
   - "{{build}}"
 sets:
   - gcc8
   - intel
-  - nco
+  - centos8
+  - centos8-gcc11
+  - centos8-intel

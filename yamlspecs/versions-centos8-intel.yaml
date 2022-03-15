@@ -1,0 +1,6 @@
+!include versions-centos8.yaml
+!include updates8.yaml
+---
+compiler:
+  name: intel
+  version: "2020u1"

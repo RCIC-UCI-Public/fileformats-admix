@@ -1,0 +1,10 @@
+!include versions.yaml
+---
+hdf5: "1.13.1"
+hdf5_major: "1.13" 
+netcdfc: "4.8.1"
+netcdff: "4.5.4"
+udunits: "2.2.28"
+ioapi: "3.2"
+# latest bug fix git tag  for Aug 2020 is ioapi_git_tag: "20200828"
+nco: "5.0.6"
