@@ -13,7 +13,7 @@
   compiler_version: "{{versions.compiler.version}}"
   vendor_source: https://github.com/cjcoats/{{name}}-{{version}}/archive/refs/tags/{{git_tag}}.{{extension}}
   description: |
-    ioapi {{version}} {git tag {{git_tag}}) for {{compiler}} {{compiler_version}}.
+    ioapi {{version}} (git tag {{git_tag}}) for {{compiler}} {{compiler_version}}.
     This library provides Fortran and C APIs for environmental model data 
     access together with related utility routines and tools for analysis and 
     manipulation of data stored by way of that API. \\n
