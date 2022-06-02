@@ -5,7 +5,8 @@ bootstrap:
   - "{{bootstrap0}}"
   - "{{bootstrap1}}"
 build:
-  - ioapi
-  - ioapi-module
   - nco
   - nco-module
+# unused
+# - ioapi
+# - ioapi-module
