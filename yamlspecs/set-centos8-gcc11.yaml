@@ -1,3 +1,8 @@
 !include set-gcc8.yaml
 ---
 versions: versions-centos8-gcc11.yaml
+build:
+  - nco
+  - nco-module
+  - ioapi
+  - ioapi-module
