@@ -1,4 +1,3 @@
 !include set-intel.yaml
 ---
 versions: versions-centos8-intel.yaml
-build:
