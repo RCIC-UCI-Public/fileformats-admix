@@ -1,0 +1,8 @@
+!include hdf5.yaml
+---
+- package: hdf5-cudasdk
+  release: 1
+  addfile: filter-requires-{{name}}-{{compiler}}.sh
+  build:
+    preconfigure: mkdir {{builddir}}; mv ../{{addfile}} ../filter-requires-{{name}}.sh
+  rpmFilters: *filterRequires

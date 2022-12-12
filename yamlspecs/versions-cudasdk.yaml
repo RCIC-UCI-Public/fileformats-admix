@@ -1,0 +1,6 @@
+!include versions-centos8.yaml
+---
+java: "17"
+compiler: 
+  name: cudasdk
+  version: "22.9"

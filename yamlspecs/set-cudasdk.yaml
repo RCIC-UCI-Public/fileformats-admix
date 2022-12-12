@@ -1,0 +1,6 @@
+!include packages.yaml
+---
+versions: versions-cudasdk.yaml
+bootstrap:
+  - hdf5-cudasdk
+  - hdf5-cudasdk-module
