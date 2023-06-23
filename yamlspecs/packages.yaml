@@ -31,5 +31,5 @@ sets:
   - centos8
   - centos8-gcc11
   - centos8-intel
-  - cudasdk
+#  - cudasdk
   - "2023"
