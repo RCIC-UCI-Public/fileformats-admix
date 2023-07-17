@@ -7,12 +7,18 @@
   versions: !include versions.yaml
   version_major: "{{versions.hdf5_major}}" 
   version: "{{versions.hdf5}}"
+  # SOME hdf5 source tarballs have subreleases (e.g -2 in version 1.14.1-2)
+  # Use as the src_tarball and src_dir definitions
+  version_subrelease: "{{versions.hdf5_subrelease}}"
+  src_tarball: hdf5-{{version}}{{version_subrelease}}.{{extension}}
+  src_dir: hdf5-{{version}}{{version_subrelease}}
+
   release: 8
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
   mpi: "{{versions.mpi.name}}"
   mpi_version: "{{versions.mpi.version}}"
-  vendor_source: https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-{{version_major}}/hdf5-{{version}}/src/hdf5-{{version}}.tar.gz 
+  vendor_source: https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-{{version_major}}/hdf5-{{version}}/src/{{src_tarball}}
   base_description: |
      HDF5 is a data model, library, and file format for storing and managing data. It supports 
      an unlimited variety of datatypes, and is designed for flexible and efficient I/O and for 

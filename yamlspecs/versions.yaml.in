@@ -7,6 +7,7 @@ mpi:
   version: "@MPIVER@"
 hdf5: "1.10.5"
 hdf5_major: "1.10" 
+hdf5_subrelease: ""
 netcdfc: "4.7.0"
 netcdff: "4.5.2"
 udunits: "2.2.26"
