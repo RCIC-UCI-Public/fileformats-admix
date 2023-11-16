@@ -4,7 +4,16 @@
 - package: netcdf-c module 
   shortname: netcdfc
   category: TOOLS
-  release: 3
+  release: 4
+  description: |
+    The Unidata network Common Data Form (netCDF) is an interface for scientific data
+    access and freely-distributed software libraries that provide an implementaion of
+    the interface.  The netCDF  library also defines a machine-independent format for
+    representing scientific data. Together, the interface, library, and format support
+    the creation, access, and sharing of scientific data.
+    The current netCDF software provides
+        netcdf-c version {{versions.netcdfc}} for C interfaces
+        netcdf-fortran version {{versions.netcdff}} for FORTRAN interfaces
   module:
     <<: *ModuleCompiler
     setenv:
