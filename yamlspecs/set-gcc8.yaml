@@ -5,8 +5,3 @@ bootstrap:
   - "{{bootstrap0}}"
   - "{{bootstrap1}}"
 build:
-  - nco
-  - nco-module
-# unused
-# - ioapi
-# - ioapi-module

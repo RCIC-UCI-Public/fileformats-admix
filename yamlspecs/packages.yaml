@@ -9,10 +9,13 @@ system:
   - !ifeq "{{site.os_release}},8,,antlr-C++"
   - libcurl-devel
 bootstrap:
-  - "{{bootstrap0}}"
 bootstrap0:
+  - "{{bootstrap_hdf5}}"
+  - "{{bootstrap_hdf5_para}}"
+bootstrap_hdf5:
   - hdf5
   - hdf5-module
+bootstrap_hdf5_para:
   - hdf5-parallel
   - hdf5-parallel-module
 bootstrap1:

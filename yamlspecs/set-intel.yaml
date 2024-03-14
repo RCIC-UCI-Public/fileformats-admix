@@ -2,8 +2,10 @@
 ---
 versions: versions-intel.yaml
 bootstrap:
-  - "{{bootstrap0}}"
-  - "{{bootstrap1}}"
+  - "{{bootstrap_hdf5}}"
+  - netcdf-c
+  - netcdf-c-module
+  - netcdf-fortran
 build:
   - ioapi
   - ioapi-module
