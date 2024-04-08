@@ -9,6 +9,7 @@ system:
   - !ifeq "{{site.os_release}},8,,antlr-C++"
   - libcurl-devel
 bootstrap:
+  - "{{bootstrap_hdf5}}"
 bootstrap0:
   - "{{bootstrap_hdf5}}"
   - "{{bootstrap_hdf5_para}}"
