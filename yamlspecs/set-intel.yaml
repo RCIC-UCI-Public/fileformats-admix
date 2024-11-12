@@ -2,7 +2,8 @@
 ---
 versions: versions-intel.yaml
 bootstrap:
-  - "{{bootstrap_hdf5}}"
+  - hdf5
+  - hdf5-module
   - netcdf-c
   - netcdf-c-module
   - netcdf-fortran
