@@ -36,7 +36,7 @@
       - java/{{versions.java}}
       - "{{build.base_compiler}}"
     modules:
-      - foundation/{{versions.foundation}}
+      - cmake/{{versions.cmake}}
       - "{{build.base_modules}}"
     pkgmake: >
       cd {{builddir}};
