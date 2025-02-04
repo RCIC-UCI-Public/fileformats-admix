@@ -1,6 +1,6 @@
 !include packages.yaml
 ---
-versions: versions-cudasdk.yaml
+versions: versions-2022-cudasdk.yaml
 bootstrap:
   - hdf5-cudasdk
   - hdf5-cudasdk-module

@@ -1,0 +1,7 @@
+!include packages.yaml
+---
+versions: versions-2021.yaml
+bootstrap:
+  - "{{bootstrap0}}"
+  - "{{bootstrap1}}"
+build:

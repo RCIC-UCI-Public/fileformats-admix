@@ -1,0 +1,11 @@
+!include packages.yaml
+---
+versions: versions-2022-gcc11.yaml
+bootstrap:
+  - "{{bootstrap0}}"
+  - "{{bootstrap1}}"
+build:
+  - nco
+  - nco-module
+  - ioapi
+  - ioapi-module

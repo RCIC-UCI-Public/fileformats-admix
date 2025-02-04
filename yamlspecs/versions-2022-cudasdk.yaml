@@ -1,4 +1,4 @@
-!include versions-centos8.yaml
+!include versions-2022.yaml
 ---
 java: "17"
 compiler: 

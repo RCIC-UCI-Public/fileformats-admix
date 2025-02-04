@@ -1,7 +1,9 @@
 !include packages.yaml
 ---
-versions: versions-gcc8.yaml
+versions: versions-2022-intel.yaml
 bootstrap:
   - "{{bootstrap0}}"
   - "{{bootstrap1}}"
 build:
+  - ioapi
+  - ioapi-module

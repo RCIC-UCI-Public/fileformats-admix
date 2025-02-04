@@ -1,6 +1,6 @@
 !include packages.yaml
 ---
-versions: versions-intel.yaml
+versions: versions-2021-intel.yaml
 bootstrap:
   - hdf5
   - hdf5-module
