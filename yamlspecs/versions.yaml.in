@@ -1,5 +1,6 @@
 !include site.yaml
 ---
+admix: fileformats-admix
 compiler: 
   version: "{{versions.compiler_sys.version}}"
 java: "1.8.0"
