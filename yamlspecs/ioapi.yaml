@@ -43,10 +43,11 @@
     pkgmake: make {{ncflibs}} {{sharedCflags}} {{sharedFflags}} {{build.configure_args}}
   ## Bind mount install
   install:
+    bind: !eval "'bindfs' if  {{versions.os_release}} >= 9 else 'mount --bind'"
     makeinstall: >
       if [ ! -d $(ROOT){{root}}/include ]; then mkdir -p $(ROOT){{root}}/include; fi;
       mkdir -p {{root}};
-      mount --bind $(ROOT)/{{root}} {{root}};
+      {{install.bind}} $(ROOT)/{{root}} {{root}};
       make {{build.configure_args}}  install;
       for x in `find ioapi -name fixed_src -prune -o -name \*.h -o -name \*.EXT`; do echo $$x; 
       install -m644 $$x {{root}}/include; done;
