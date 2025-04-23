@@ -5,8 +5,8 @@ system:
   - expat-devel
   - openmpi-devel
   - java-1.8.0-openjdk-devel
-  - !ifeq "{{site.os_release}},8,,antlr-python"
-  - !ifeq "{{site.os_release}},8,,antlr-C++"
+  - !eval "'antlr-python' if {{site.os_release}} >= 8 else ''"
+  - !eval "'antlr-C++' if {{site.os_release}} >= 8 else ''"
   - libcurl-devel
 bootstrap:
   - "{{bootstrap_hdf5}}"
@@ -31,7 +31,7 @@ manifest:
   - "{{build}}"
 sets:
   - "2021"
-  - "2021-intel"
+  - !eval "'2021-intel' if {{site.os_release}} <= 8 else ''"
   - "2022"
   - "2022-gcc11"
   - "2022-intel"
