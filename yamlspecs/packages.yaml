@@ -5,8 +5,9 @@ system:
   - expat-devel
   - openmpi-devel
   - java-1.8.0-openjdk-devel
-  - !eval "'antlr-python' if {{site.os_release}} >= 8 else ''"
+  - !eval "'antlr-python' if {{site.os_release}} == 8 else ''"
   - !eval "'antlr-C++' if {{site.os_release}} >= 8 else ''"
+  - !eval "'antlr-tool' if {{site.os_release}} >= 9 else ''"
   - libcurl-devel
 bootstrap:
   - "{{bootstrap_hdf5}}"
