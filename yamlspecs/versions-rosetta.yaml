@@ -1,0 +1,10 @@
+## GCC8 and and hdf5 1.13.1 -- This so that rosetta in the protected admix can build.
+# It won't build with gcc 11 
+!include versions.yaml
+---
+compiler: 
+  name: gcc
+  version: "8.4.0"
+hdf5: "1.13.1"
+hdf5_major: "1.13"
+

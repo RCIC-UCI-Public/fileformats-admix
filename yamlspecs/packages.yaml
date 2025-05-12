@@ -38,3 +38,4 @@ sets:
   - "2022-intel"
   - "2022-cudasdk"
   - "2023"
+  - !eval "'rosetta' if {{site.os_release}} >= 9 else ''"

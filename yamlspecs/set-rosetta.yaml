@@ -1,0 +1,7 @@
+!include packages.yaml
+---
+versions: versions-rosetta.yaml
+bootstrap:
+build:
+  - hdf5
+  - hdf5-module
