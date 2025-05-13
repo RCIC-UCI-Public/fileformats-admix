@@ -9,11 +9,6 @@ system:
   - !eval "'antlr-C++' if {{site.os_release}} >= 8 else ''"
   - !eval "'antlr-tool' if {{site.os_release}} >= 9 else ''"
   - libcurl-devel
-bootstrap:
-  - "{{bootstrap_hdf5}}"
-bootstrap0:
-  - "{{bootstrap_hdf5}}"
-  - "{{bootstrap_hdf5_para}}"
 bootstrap_hdf5:
   - hdf5
   - hdf5-module
@@ -26,11 +21,13 @@ bootstrap1:
   - netcdf-fortran
   - udunits
   - udunits-module
+bootstrap:
 build:
 manifest:
   - "{{bootstrap}}"
   - "{{build}}"
 sets:
+  - base
   - "2021"
   - !eval "'2021-intel' if {{site.os_release}} <= 8 else ''"
   - "2022"

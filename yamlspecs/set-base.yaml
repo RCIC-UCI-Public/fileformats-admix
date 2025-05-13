@@ -1,6 +1,5 @@
 !include packages.yaml
 ---
-versions: versions-2023.yaml
+versions: versions.yaml
 bootstrap:
   - "{{bootstrap_hdf5}}"
-  - "{{bootstrap_hdf5_para}}"

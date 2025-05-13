@@ -2,4 +2,5 @@
 ---
 versions: versions-2022.yaml
 bootstrap:
-   - "{{bootstrap0}}"
+  - "{{bootstrap_hdf5}}"
+  - "{{bootstrap_hdf5_para}}"

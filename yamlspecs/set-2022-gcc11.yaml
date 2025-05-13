@@ -2,7 +2,8 @@
 ---
 versions: versions-2022-gcc11.yaml
 bootstrap:
-  - "{{bootstrap0}}"
+  - "{{bootstrap_hdf5}}"
+  - "{{bootstrap_hdf5_para}}"
   - "{{bootstrap1}}"
 build:
   - nco
