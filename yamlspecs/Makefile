@@ -15,5 +15,5 @@ versions.yaml: versions.yaml.in
 
 prep: versions.yaml
 
-clean: versions.yaml
-	/bin/rm -f versions.yaml
+veryclean:: versions.yaml
+	- /bin/rm -f versions.yaml
