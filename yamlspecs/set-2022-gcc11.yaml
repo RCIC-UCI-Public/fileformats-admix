@@ -6,7 +6,7 @@ bootstrap:
   - "{{bootstrap_hdf5_para}}"
   - "{{bootstrap1}}"
 build:
-  - nco
-  - nco-module
-  - ioapi
-  - ioapi-module
+# - nco
+# - nco-module
+# - ioapi
+# - ioapi-module
