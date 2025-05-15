@@ -6,5 +6,5 @@ bootstrap:
   - "{{bootstrap_hdf5_para}}"
   - "{{bootstrap1}}"
 build:
-  - ioapi
-  - ioapi-module
+# - ioapi
+# - ioapi-module
