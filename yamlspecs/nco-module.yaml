@@ -1,7 +1,7 @@
 !include nco.yaml
 !include rcic-module.yaml
 ---
-- package: nco module 
+- package: nco module
   category: TOOLS
   module:
     <<: *ModuleCompiler

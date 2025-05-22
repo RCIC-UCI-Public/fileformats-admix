@@ -3,9 +3,9 @@
 !include rpm.yaml
 ---
 - package: hdf5
-  name: hdf5 
+  name: hdf5
   versions: !include versions.yaml
-  version_major: "{{versions.hdf5_major}}" 
+  version_major: "{{versions.hdf5_major}}"
   version: "{{versions.hdf5}}"
   # SOME hdf5 source tarballs have subreleases (e.g -2 in version 1.14.1-2)
   # Use as the src_tarball and src_dir definitions
@@ -20,16 +20,15 @@
   mpi_version: "{{versions.mpi.version}}"
   vendor_source: https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-{{version_major}}/hdf5-{{version}}/src/{{src_tarball}}
   base_description: |
-     HDF5 is a data model, library, and file format for storing and managing data. It supports 
-     an unlimited variety of datatypes, and is designed for flexible and efficient I/O and for 
-     high volume and complex data. HDF5 is portable and is extensible, allowing applications to 
-     evolve in their use of HDF5. The HDF5 Technology suite includes tools and applications for
-     managing, manipulating, viewing, and analyzing data in the HDF5 format.
-     Environment variable HDF5_HOME = {{root}}. 
+     HDF5 is a High-performance data management and storage suite.
+     It supports an unlimited variety of datatypes, and is designed
+     for flexible and efficient I/O and for high volume and complex
+     data. The HDF5 suite includes tools and applications for managing,
+     manipulating, viewing, and analyzing data in the HDF5 format.
   builddir: build
   build:
     preconfigure: mkdir {{builddir}}
-    configure: cd {{builddir}}; cmake 
+    configure: cd {{builddir}}; cmake
     base_compiler:
       - "{{compiler}}/{{compiler_version}}"
     base_modules:
@@ -47,8 +46,8 @@
     - java-{{versions.java}}-openjdk
     - "{{base_requires}}"
   install:
-    makeinstall: > 
-      cd {{builddir}}; 
+    makeinstall: >
+      cd {{builddir}};
       make DESTDIR=$(ROOT) install;
       pushd $(ROOT){{root}}/lib/pkgconfig;
       for x in hdf5 hdf5_hl hdf5_cpp hdf5_cpp_hl; do

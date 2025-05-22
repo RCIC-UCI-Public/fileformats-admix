@@ -4,7 +4,7 @@
   baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}_{{mpi}}_{{mpi_version}}"
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}/{{mpi}}/{{mpi_version}}"
   description: |
-    This is a parallel version compiled with gcc {{compiler_version}} and {{mpi}} version {{mpi_version}}.
+    Parallel version of HDF5 compiled with gcc {{compiler_version}} and {{mpi}} version {{mpi_version}}.
     {{base_description}}
   build:
     configure_args: -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX={{root}} -DHDF5_BUILD_FORTRAN:BOOL=ON -DHDF5_BUILD_CPP_LIB:BOOL=OFF  -DHDF5_BUILD_JAVA:BOOL=ON -DHDF5_ENABLE_PARALLEL:BOOL=ON ..

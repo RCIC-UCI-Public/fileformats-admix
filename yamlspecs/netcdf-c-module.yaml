@@ -1,7 +1,7 @@
 !include netcdf-c.yaml
 !include rcic-module.yaml
 ---
-- package: netcdf-c module 
+- package: netcdf-c module
   shortname: netcdfc
   category: TOOLS
   release: 4
@@ -14,6 +14,8 @@
     The current netCDF software provides
         netcdf-c version {{versions.netcdfc}} for C interfaces
         netcdf-fortran version {{versions.netcdff}} for FORTRAN interfaces
+  shortdescription: |
+    The Unidata network Common Data Form (netCDF) is an interface for scientific data access.
   module:
     <<: *ModuleCompiler
     setenv:

@@ -1,7 +1,7 @@
 ## Intel and Openmpi 4.0.3
 !include versions.yaml
 ---
-compiler: 
+compiler:
   name: intel
   version: "2020u1"
 mpi:

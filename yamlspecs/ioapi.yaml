@@ -1,11 +1,11 @@
 !include rcic-package.yaml
 ---
-- package: ioapi 
-  name: ioapi 
+- package: ioapi
+  name: ioapi
   baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
   versions: !include versions.yaml
-  version: "{{versions.ioapi}}" 
+  version: "{{versions.ioapi}}"
   release: 3
   ioapi_arch: "{{versions.ioapi_arch}}"
   git_tag: "{{versions.ioapi_git_tag}}"
@@ -13,12 +13,11 @@
   compiler_version: "{{versions.compiler.version}}"
   vendor_source: https://github.com/cjcoats/{{name}}-{{version}}/archive/refs/tags/{{git_tag}}.{{extension}}
   description: |
-    ioapi {{version}} (git tag {{git_tag}}) for {{compiler}} {{compiler_version}}.
-    This library provides Fortran and C APIs for environmental model data 
-    access together with related utility routines and tools for analysis and 
-    manipulation of data stored by way of that API. \\n
-    This version provides a static library libioapi.a and two shared-object
-    libraries libioapic.so and libioapif.so.
+    Input Output Applications Programming Interface (IOAPI).
+    Ioapi {{version}} (git tag {{git_tag}}) for {{compiler}} {{compiler_version}}.
+    Provides Fortran and C APIs for environmental model data access
+    together with related utility routines and tools for analysis and
+    manipulation of data stored by way of that API.
   src_tarball: "{{name}}-{{version}}-{{git_tag}}.{{extension}}"
   src_dir: "{{name}}-{{version}}-{{git_tag}}"
   # define all extra build flags for configure and make
@@ -36,7 +35,7 @@
     configure: echo handled in preconfigure
     configure_args: \
          BASEDIR=$$(pwd) BIN={{ioapi_arch}} \
-         CPLMODE=nocpl INSTALL={{root}} BININST={{root}}/bin LIBINST={{root}}/lib 
+         CPLMODE=nocpl INSTALL={{root}} BININST={{root}}/bin LIBINST={{root}}/lib
     modules:
        - "{{compiler}}/{{compiler_version}}"
        - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}
@@ -49,7 +48,7 @@
       mkdir -p {{root}};
       {{install.bind}} $(ROOT)/{{root}} {{root}};
       make {{build.configure_args}}  install;
-      for x in `find ioapi -name fixed_src -prune -o -name \*.h -o -name \*.EXT`; do echo $$x; 
+      for x in `find ioapi -name fixed_src -prune -o -name \*.h -o -name \*.EXT`; do echo $$x;
       install -m644 $$x {{root}}/include; done;
       umount {{root}};
       rm -rf {{root}}

@@ -1,7 +1,7 @@
 !include hdf5-cudasdk.yaml
 !include rcic-module.yaml
 ---
-- package: hdf5 cudasdk module 
+- package: hdf5 cudasdk module
   category: TOOLS
   module:
     <<: *ModuleCompiler

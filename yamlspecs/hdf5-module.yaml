@@ -1,7 +1,7 @@
 !include hdf5.yaml
 !include rcic-module.yaml
 ---
-- package: hdf5 module 
+- package: hdf5 module
   category: TOOLS
   release: 4
   module:

@@ -1,6 +1,6 @@
 !include versions-2022.yaml
 ---
 java: "17"
-compiler: 
+compiler:
   name: cudasdk
   version: "22.9"

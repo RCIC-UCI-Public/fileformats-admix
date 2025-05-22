@@ -1,7 +1,7 @@
 !include ioapi.yaml
 !include rcic-module.yaml
 ---
-- package: ioapi module 
+- package: ioapi module
   category: TOOLS
   release: 3
   module:

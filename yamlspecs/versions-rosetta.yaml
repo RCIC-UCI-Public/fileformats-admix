@@ -2,7 +2,7 @@
 # It won't build with gcc 11 
 !include versions.yaml
 ---
-compiler: 
+compiler:
   name: gcc
   version: "8.4.0"
 hdf5: "1.13.1"

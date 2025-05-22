@@ -1,24 +1,18 @@
 !include rcic-package.yaml
 !include rpm.yaml
 ---
-- package: nco 
-  name: nco 
+- package: nco
+  name: nco
   baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
   versions: !include versions.yaml
-  version: "{{versions.nco}}" 
+  version: "{{versions.nco}}"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
   vendor_source: https://github.com/{{name}}/{{name}}/archive/{{version}}.{{extension}}
   description: |
-    NCO {{version}} for {{compiler}} {{compiler_version}}.
-    The NCO toolkit manipulates and analyzes data stored in netCDF-accessible formats, 
-    including DAP, HDF4, and HDF5. It exploits the geophysical expressivity of many 
-    CF (Climate & Forecast) metadata conventions, the flexible description of physical 
-    dimensions translated by UDUnits, the network transparency of OPeNDAP, the 
-    storage features (e.g., compression, chunking, groups) of HDF (the Hierarchical Data Format), 
-    and many powerful mathematical and statistical algorithms of GSL (the GNU Scientific Library). 
-    NCO is fast, powerful, and free.
+    The NCO toolkit manipulates and analyzes data stored in netCDF-accessible formats.
+    The formats include DAP, HDF4, and HDF5. NCO is fast, powerful, and free.
   build:
     modules:
        - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}
@@ -26,7 +20,7 @@
        - udunits/{{versions.udunits}}/{{compiler}}.{{compiler_version}}
        - gsl/{{versions.gsl}}/{{compiler}}.{{compiler_version}}
        - "{{compiler}}/{{compiler_version}}"
-    pkgmake: make -j 8 
+    pkgmake: make -j 8
     configure: ./configure
   requires:
        - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}
