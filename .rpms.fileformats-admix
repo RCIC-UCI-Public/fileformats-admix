@@ -1,3 +1,4 @@
+ls -l RPMS/*/ | grep rpm | awk '{printf "%-15.f %s\n", int($5/100)*100, $9}'
 10057000        hdf5_1.10.5_gcc_8.4.0-1.10.5-8.x86_64.rpm
 8500            hdf5_1.10.5_gcc_8.4.0-module-1.10.5-4.x86_64.rpm
 10648000        hdf5_1.10.5_gcc_8.4.0_openmpi_4.0.3-1.10.5-8.x86_64.rpm
@@ -26,6 +27,10 @@
 8900            hdf5_1.14.1_gcc_11.2.0_openmpi_4.1.2-module-1.14.1-8.x86_64.rpm
 14891400        hdf5_1.14.1_gcc_11.2.0_openmpi_5.0.1-1.14.1-8.x86_64.rpm
 8900            hdf5_1.14.1_gcc_11.2.0_openmpi_5.0.1-module-1.14.1-8.x86_64.rpm
+7305000         hdf5_2.0.0_gcc_15.2.0-2.0.0-8.x86_64.rpm
+8500            hdf5_2.0.0_gcc_15.2.0-module-2.0.0-4.x86_64.rpm
+7357800         hdf5_2.0.0_gcc_15.2.0_openmpi_5.0.9-2.0.0-8.x86_64.rpm
+8800            hdf5_2.0.0_gcc_15.2.0_openmpi_5.0.9-module-2.0.0-8.x86_64.rpm
 5094200         ioapi_3.2_intel_2022.2-3.2-3.x86_64.rpm
 8600            ioapi_3.2_intel_2022.2-module-3.2-3.x86_64.rpm
 807600          netcdf-c_4.7.0_gcc_8.4.0-4.7.0-3.x86_64.rpm
@@ -41,5 +46,7 @@
 8400            udunits_2.2.26_gcc_8.4.0-module-2.2.26-3.x86_64.rpm
 159600          udunits_2.2.28_gcc_11.2.0-2.2.28-4.x86_64.rpm
 8400            udunits_2.2.28_gcc_11.2.0-module-2.2.28-3.x86_64.rpm
+159400          udunits_2.2.28_gcc_15.2.0-2.2.28-4.x86_64.rpm
+8400            udunits_2.2.28_gcc_15.2.0-module-2.2.28-3.x86_64.rpm
 296700          udunits_2.2.28_intel_2022.2-2.2.28-4.x86_64.rpm
 8400            udunits_2.2.28_intel_2022.2-module-2.2.28-3.x86_64.rpm
