@@ -12,13 +12,16 @@
   version_subrelease: "{{versions.hdf5_subrelease}}"
   src_tarball: hdf5-{{version}}{{version_subrelease}}.{{extension}}
   src_dir: hdf5-{{version}}{{version_subrelease}}
-
   release: 8
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
   mpi: "{{versions.mpi.name}}"
   mpi_version: "{{versions.mpi.version}}"
-  vendor_source: https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-{{version_major}}/hdf5-{{version}}/src/{{src_tarball}}
+  # for hdf5 v 1.*
+  ftp_source: https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-{{version_major}}/hdf5-{{version}}/src/{{src_tarball}}
+  # for hdf5 v 2.*
+  github_source: https://github.com/HDFGroup/hdf5/releases/download/{{version}}/{{name}}-{{version}}.{{extension}}
+  vendor_source: !ifeq "{{versions.hdf5_source}},github,{{github_source}},{{ftp_source}}"
   base_description: |
      HDF5 is a High-performance data management and storage suite.
      It supports an unlimited variety of datatypes, and is designed
@@ -47,6 +50,7 @@
     - "{{base_requires}}"
   install:
     makeinstall: >
+      if [ -d HDF5Examples ]; then mv HDF5Examples HDF5Examples.orig; fi;
       cd {{builddir}};
       make DESTDIR=$(ROOT) install;
       pushd $(ROOT){{root}}/lib/pkgconfig;

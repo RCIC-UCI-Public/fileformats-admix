@@ -9,6 +9,7 @@ mpi:
 hdf5: "1.10.5"
 hdf5_major: "1.10" 
 hdf5_subrelease: ""
+hdf5_source: ftp
 netcdfc: "4.7.0"
 netcdff: "4.5.2"
 udunits: "2.2.26"
