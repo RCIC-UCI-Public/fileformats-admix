@@ -50,7 +50,6 @@
     - "{{base_requires}}"
   install:
     makeinstall: >
-      if [ -d HDF5Examples ]; then mv HDF5Examples HDF5Examples.orig; fi;
       cd {{builddir}};
       make DESTDIR=$(ROOT) install;
       pushd $(ROOT){{root}}/lib/pkgconfig;
