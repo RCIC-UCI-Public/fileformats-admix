@@ -38,3 +38,4 @@ sets:
   - !eval "'rosetta' if {{site.os_release}} >= 9 else ''"
   - "2024"
   - "2026"
+  - "2026-base"
