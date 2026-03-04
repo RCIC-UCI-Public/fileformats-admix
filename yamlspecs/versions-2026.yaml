@@ -5,4 +5,5 @@ hdf5: "2.0.0"
 hdf5_major: 
 hdf5_subrelease: ""
 hdf5_source: github
+hdf5_zlibname: ZLIB
 udunits: "2.2.28"

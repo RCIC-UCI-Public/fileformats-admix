@@ -22,6 +22,7 @@
   # for hdf5 v 2.*
   github_source: https://github.com/HDFGroup/hdf5/releases/download/{{version}}/{{name}}-{{version}}.{{extension}}
   vendor_source: !ifeq "{{versions.hdf5_source}},github,{{github_source}},{{ftp_source}}"
+  zlibname: "{{versions.hdf5_zlibname}}"
   base_description: |
      HDF5 is a High-performance data management and storage suite.
      It supports an unlimited variety of datatypes, and is designed
