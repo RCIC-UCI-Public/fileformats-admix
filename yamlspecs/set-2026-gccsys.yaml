@@ -1,5 +1,5 @@
 !include packages.yaml
 ---
-versions: versions-2026-base.yaml
+versions: versions-2026-gccsys.yaml
 bootstrap:
    - "{{bootstrap_hdf5}}"

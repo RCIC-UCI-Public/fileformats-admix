@@ -7,3 +7,5 @@ hdf5_subrelease: ""
 hdf5_source: github
 hdf5_zlibname: ZLIB
 udunits: "2.2.28"
+netcdfc: "4.10.0"
+netcdff: "4.6.2"

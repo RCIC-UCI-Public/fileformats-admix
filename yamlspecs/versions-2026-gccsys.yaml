@@ -1,0 +1,4 @@
+!include versions-2026.yaml
+---
+compiler:
+  version: "{{versions.compiler_sys.version}}"

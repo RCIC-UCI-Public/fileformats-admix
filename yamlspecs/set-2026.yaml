@@ -4,5 +4,4 @@ versions: versions-2026.yaml
 bootstrap:
    - "{{bootstrap_hdf5}}"
    - "{{bootstrap_hdf5_para}}"
-   - udunits
-   - udunits-module
+   - "{{bootstrap1}}"
