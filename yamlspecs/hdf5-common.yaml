@@ -31,6 +31,7 @@
      manipulating, viewing, and analyzing data in the HDF5 format.
   builddir: build
   build:
+    patchfile: "{{name}}-{{version}}.patch"
     preconfigure: mkdir {{builddir}}
     configure: cd {{builddir}}; cmake
     base_compiler:
@@ -47,7 +48,7 @@
   base_requires:
     - "{{compiler}}_{{compiler_version}}"
   requires:
-    - java-{{versions.java}}-openjdk
+    - !OScmp "<, 10, java-{{versions.java}}-openjdk,java_{{versions.java}}"
     - "{{base_requires}}"
   install:
     makeinstall: >

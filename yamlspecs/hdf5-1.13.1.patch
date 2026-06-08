@@ -1,0 +1,11 @@
+--- hdf5-1.13.1/java/src/jni/h5util.c	2022-02-25 08:05:22.000000000 -0800
++++ hdf5-1.13.1/java/src/jni/h5util.c.new	2026-06-05 13:02:38.651994353 -0700
+@@ -813,7 +813,7 @@
+                     if (NULL == (this_str = (char *)HDmalloc(this_len)))
+                         H5_OUT_OF_MEMORY_ERROR(ENVONLY, "h5str_sprintf: failed to allocate string buffer");
+ 
+-                    if (HDsnprintf(this_str, "%g", this_len, tmp_double) < 0)
++                    if (HDsnprintf(this_str, this_len, "%g", tmp_double) < 0)
+                         H5_JNI_FATAL_ERROR(ENVONLY, "h5str_sprintf: HDsnprintf failure");
+ 
+                     break;
