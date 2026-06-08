@@ -4,11 +4,12 @@ system:
   - gcc-gfortran
   - expat-devel
   - openmpi-devel
-  - java-1.8.0-openjdk-devel
+  - !eval "'java-1.8.0-openjdk-devel' if {{site.os_release}} <= 9 else ''"
   - !eval "'antlr-python' if {{site.os_release}} == 8 else ''"
   - !eval "'antlr-C++' if {{site.os_release}} >= 8 else ''"
   - !eval "'antlr-tool' if {{site.os_release}} >= 9 else ''"
   - libcurl-devel
+  - !eval "'zlib-ng-compat-static' if {{site.os_release}} >= 10 else 'zlib-static'"
 bootstrap_hdf5:
   - hdf5
   - hdf5-module
