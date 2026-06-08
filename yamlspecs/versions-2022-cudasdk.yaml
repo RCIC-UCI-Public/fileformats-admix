@@ -4,3 +4,4 @@ java: "17"
 compiler:
   name: cudasdk
   version: "22.9"
+cudasdk_opts10: "gcc/11.2.0"
