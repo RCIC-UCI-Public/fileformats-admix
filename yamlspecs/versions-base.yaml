@@ -1,5 +1,0 @@
-!include versions.yaml
----
-# Define these options to bypass compilation errors for the old hdf5 1.10.5
-# on rocky 10 with a system gcc.
-hdf5_opts10: -DCMAKE_C_FLAGS="Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types" -DCMAKE_CXX_FLAGS="Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types" 
