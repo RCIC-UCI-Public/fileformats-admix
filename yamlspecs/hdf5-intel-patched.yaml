@@ -1,0 +1,20 @@
+# This is for compiling older hdf5 on Rocky 10 with intel compiler.
+!include hdf5.yaml
+---
+- build:
+    configure_args: >
+      -DCMAKE_BUILD_TYPE=Release
+      -DHDF5_BUILD_FORTRAN:BOOL=ON
+      -DHDF5_BUILD_CPP_LIB:BOOL=ON
+      -DHDF5_BUILD_JAVA:BOOL=ON
+      -DHDF5_ENABLE_{{zlibname}}_SUPPORT=ON
+      -DZLIB_INCLUDE_DIR=/usr/include 
+      -DZLIB_LIBRARY=/usr/lib64/libz.so 
+      -DCMAKE_INSTALL_PREFIX={{root}}
+      -DCMAKE_C_COMPILER=icx 
+      -DCMAKE_CXX_COMPILER=icpx 
+      -DCMAKE_Fortran_COMPILER=ifx 
+      -DCMAKE_C_FLAGS='-O2 -D__STDC_WANT_IEC_60559_TYPES_EXT__=0' 
+      -DCMAKE_CXX_FLAGS='-O2 -std=c++17 -D__STDC_WANT_IEC_60559_TYPES_EXT__=0' 
+      -DCMAKE_Fortran_FLAGS='-O2'
+      ..
