@@ -1,5 +1,6 @@
 !include packages.yaml
 ---
-versions: versions.yaml
+versions: versions-base.yaml
 bootstrap:
-  - "{{bootstrap_hdf5}}"
+  - !eval "'hdf5' if {{site.os_release}} <= 9 else 'hdf5-patched'"
+  - hdf5-module
