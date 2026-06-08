@@ -1,0 +1,9 @@
+#!/bin/bash
+
+/usr/lib/rpm/find-requires $* | sed  -e "/libiomp5.*/d"
+
+
+# NOTE: this is needed as of Rocky 10.
+# the libiomp5*  libraries are availalbe with intel/2022.2 compiler
+# and are properly loaded during compilation or run time via module.
+# Using these requires  allows RPM to install.

@@ -13,6 +13,7 @@
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
   vendor_source: https://github.com/cjcoats/{{name}}-{{version}}/archive/refs/tags/{{git_tag}}.{{extension}}
+# addfile: filter-requires-{{name}}.sh
   description: |
     Input Output Applications Programming Interface (IOAPI).
     Ioapi {{version}} (git tag {{git_tag}}) for {{compiler}} {{compiler_version}}.
@@ -56,6 +57,7 @@
   requires:
        - "{{compiler}}_{{compiler_version}}"
        - netcdf-c_{{versions.netcdfc}}_{{compiler}}_{{compiler_version}}
+  rpmFilters: *filterRequires
 
 # NOTE: when compiling with gcc v.11 have multiple errors:
 #    Error: Rank mismatch between actual argument at (1) and actual argument at (2)
