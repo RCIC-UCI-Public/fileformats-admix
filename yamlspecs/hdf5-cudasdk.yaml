@@ -1,8 +1,13 @@
-!include hdf5.yaml
+!include hdf5-patched.yaml
 ---
 - package: hdf5-cudasdk
   release: 1
   addfile: filter-requires-{{name}}-{{compiler}}.sh
+  addmod: !OScmp ">=, 10, {{versions.cudasdk_opts10}},"
   build:
+    base_modules:
+      - java/{{versions.java}}
+      - "{{build.base_compiler}}"
+      - "{{addmod}}"
     preconfigure: mkdir {{builddir}}; mv ../{{addfile}} ../filter-requires-{{name}}.sh
   rpmFilters: *filterRequires
