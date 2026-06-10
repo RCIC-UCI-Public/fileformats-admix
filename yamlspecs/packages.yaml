@@ -1,15 +1,14 @@
 ---
-site: !include site.yaml
 system:
   - gcc-gfortran
   - expat-devel
   - openmpi-devel
-  - !eval "'java-1.8.0-openjdk-devel' if {{site.os_release}} <= 9 else ''"
-  - !eval "'antlr-python' if {{site.os_release}} == 8 else ''"
-  - !eval "'antlr-C++' if {{site.os_release}} >= 8 else ''"
-  - !eval "'antlr-tool' if {{site.os_release}} >= 9 else ''"
+  - !OScmp "<=,9,java-1.8.0-openjdk-devel,"
+  - !OScmp "==,8,antlr-python,"
+  - !OScmp ">=,8,antlr-C++,"
+  - !OScmp ">=,9,antlr-tool,"
   - libcurl-devel
-  - !eval "'zlib-ng-compat-static' if {{site.os_release}} >= 10 else 'zlib-static'"
+  - !OScmp ">=,10,zlib-ng-compat-static,zlib-static"
 bootstrap_hdf5:
   - hdf5
   - hdf5-module
@@ -30,13 +29,13 @@ manifest:
 sets:
   - base
   - "2021"
-  - !eval "'2021-intel' if {{site.os_release}} <= 8 else ''"
+  - !OScmp "<=,8,2021-intel,"
   - "2022"
   - "2022-gcc11"
   - "2022-intel"
   - "2022-cudasdk"
   - "2023"
-  - !eval "'rosetta' if {{site.os_release}} >= 9 else ''"
+  - !OScmp ">=,9,rosetta," 
   - "2024"
   - "2026"
   - "2026-gccsys"

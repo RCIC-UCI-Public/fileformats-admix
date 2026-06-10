@@ -2,7 +2,7 @@
 ---
 versions: versions-2022-intel.yaml
 bootstrap:
-  - !eval "'hdf5' if {{site.os_release}} <= 9 else 'hdf5-intel-patched'"
+  - !OScmp "<=,9,hdf5,hdf5-intel-patched"
   - hdf5-module
   - "{{bootstrap_hdf5_para}}"
   - "{{bootstrap1}}"
