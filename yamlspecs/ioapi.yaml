@@ -44,7 +44,7 @@
     pkgmake: make {{ncflibs}} {{sharedCflags}} {{sharedFflags}} {{build.configure_args}}
   ## Bind mount install
   install:
-    bind: !eval "'bindfs' if  {{versions.os_release}} >= 9 else 'mount --bind'"
+    bind: !OScmp ">=,9,bindfs,mount --bind"
     makeinstall: >
       if [ ! -d $(ROOT){{root}}/include ]; then mkdir -p $(ROOT){{root}}/include; fi;
       mkdir -p {{root}};
