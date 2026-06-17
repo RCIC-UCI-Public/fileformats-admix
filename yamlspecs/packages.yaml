@@ -3,10 +3,9 @@ system:
   - gcc-gfortran
   - expat-devel
   - openmpi-devel
-  - !OScmp "<=,9,java-1.8.0-openjdk-devel,"
-  - !OScmp "==,8,antlr-python,"
-  - !OScmp ">=,8,antlr-C++,"
-  - !OScmp ">=,9,antlr-tool,"
+  - !OScmp "<,10,java-1.8.0-openjdk-devel,"
+  - antlr-C++
+  - antlr-tool
   - libcurl-devel
   - !OScmp ">=,10,zlib-ng-compat-static,zlib-static"
 bootstrap_hdf5:
@@ -29,13 +28,12 @@ manifest:
 sets:
   - base
   - "2021"
-  - !OScmp "<=,8,2021-intel,"
   - "2022"
   - "2022-gcc11"
   - "2022-intel"
   - "2022-cudasdk"
   - "2023"
-  - !OScmp ">=,9,rosetta," 
+  - rosetta
   - "2024"
   - "2026"
   - "2026-gccsys"

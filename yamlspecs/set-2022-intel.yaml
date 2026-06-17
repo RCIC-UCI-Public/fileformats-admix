@@ -2,7 +2,7 @@
 ---
 versions: versions-2022-intel.yaml
 bootstrap:
-  - !OScmp "<=,9,hdf5,hdf5-intel-patched"
+  - !OScmp "<,10,hdf5,hdf5-intel-patched"
   - hdf5-module
   - "{{bootstrap_hdf5_para}}"
   - "{{bootstrap1}}"
