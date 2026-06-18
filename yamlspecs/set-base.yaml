@@ -2,5 +2,5 @@
 ---
 versions: versions.yaml
 bootstrap:
-  - !OScmp "<,10,hdf5,hdf5-patched"
+  - hdf5 
   - hdf5-module

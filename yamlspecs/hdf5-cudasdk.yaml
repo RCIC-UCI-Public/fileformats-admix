@@ -1,9 +1,11 @@
-!include hdf5-patched.yaml
+!include hdf5.yaml
 ---
 - package: hdf5-cudasdk
   release: 1
   addfile: filter-requires-{{name}}-{{compiler}}.sh
   addmod: !OScmp ">=, 10, {{versions.cudasdk_opts10}},"
+  # set nvcc True so that unknown flags for C/C++ don't break nvcc compiles
+  nvcc: True
   build:
     base_modules:
       - java/{{versions.java}}
