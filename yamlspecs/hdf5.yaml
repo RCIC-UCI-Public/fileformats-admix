@@ -5,11 +5,11 @@
   description: "{{base_description}}"
 
   # These arguments are for Rocky 10 for C/C++ that are not NVCC.
-  nvcc: False
   os10: !OScmp ">=, 10, True, False"
-  cargs_10:  -DCMAKE_C_FLAGS=\\"-Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types\\" -DCMAKE_CXX_FLAGS=\\"-Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types\\"
-  add_cargs: !eval "'{{cargs_10}}' if not {{nvcc}} and {{os10}} else ''"
-
+  cargs_10: 
+    -DCMAKE_C_FLAGS=\'-Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types\'
+    -DCMAKE_CXX_FLAGS=\'-Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types\'
+  add_cargs: !eval "'{{cargs_10}}' if {{os10}} else ''"
   build:
     configure_args: >
       -DCMAKE_BUILD_TYPE=Release

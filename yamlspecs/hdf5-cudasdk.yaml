@@ -3,13 +3,31 @@
 - package: hdf5-cudasdk
   release: 1
   addfile: filter-requires-{{name}}-{{compiler}}.sh
-  addmod: !OScmp ">=, 10, {{versions.cudasdk_opts10}},"
-  # set nvcc True so that unknown flags for C/C++ don't break nvcc compiles
-  nvcc: True
+  # the following 4 variables are for using a specific gcc compiler
+  # to use with nvcc and for pasing them to cmake.
+  gccver: "{{versions.gcc_cudasdk}}"
+  addmod: !OScmp ">=, 10, gcc/{{gccver}},"
+  tchain:  --gcc-toolchain={{pkg_defaults.app_path}}/gcc/{{gccver}}
+  cargs_10:
+    -DCMAKE_C_COMPILER=nvc
+    -DCMAKE_C_FLAGS=\'{{tchain}}\'
+    -DCMAKE_CXX_COMPILER=nvc++
+    -DCMAKE_CXX_FLAGS=\'{{tchain}}\'
+    -DCMAKE_Fortran_COMPILER=nvfortran
+    -DCMAKE_Fortran_FLAGS=\'{{tchain}}\'
+    -DCMAKE_CUDA_FLAGS=\'ccbin {{pkg_defaults.app_path}}/gcc/{{gccver}}/bin/gcc\'
   build:
     base_modules:
       - java/{{versions.java}}
       - "{{build.base_compiler}}"
       - "{{addmod}}"
     preconfigure: mkdir {{builddir}}; mv ../{{addfile}} ../filter-requires-{{name}}.sh
+    pkgmake: >
+      # use specific compiler to create localrc file for nvcc
+      cd {{builddir}};
+      if [ {{os10}} == 1 ]; then \
+          makelocalrc -d . -x -gcc $$GCC_INSTALL_PREFIX/bin/gcc -gpp $$GCC_INSTALL_PREFIX/bin/g++; \
+          export NVLOCALRC=`pwd`/localrc; \
+      fi;
+      make -j 8
   rpmFilters: *filterRequires
